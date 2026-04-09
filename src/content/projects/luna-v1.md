@@ -8,6 +8,7 @@ featured: true
 order: 2
 cover: "/projects/luna-v1/cover.jpg.png"
 coverLayout: landscape
+retro: true
 images:
   - "/projects/luna-v1/cover.jpg.png"
   - "/projects/luna-v1/01.jpg.png"

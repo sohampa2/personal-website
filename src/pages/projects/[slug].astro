@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { title, phase, context, body, tags, images, cover, coverLayout } = project.data;
+const { title, phase, context, body, tags, images, cover, coverLayout, retro } = project.data;
 const isPortrait = coverLayout === 'portrait';
 
 const allProjects = await getCollection('projects');
@@ -49,20 +49,28 @@ const next = sorted[currentIndex + 1];
   </nav>
 
   <!-- PROJECT HERO -->
-  <section class="project-hero">
+  <section class={`project-hero${retro ? ' project-hero--retro' : ''}`}>
+    {retro && (
+      <div class="retro-stripes" aria-hidden="true">
+        <span /><span /><span /><span /><span />
+      </div>
+    )}
     <div class="container">
       <div class="project-hero-inner fade-in">
         <a href="/#projects" class="back-link">← all projects</a>
         <div class="project-meta-row">
-          <span class="project-phase-label"><span class="phase-dot">●</span>{phase}</span>
+          <span class={`project-phase-label${retro ? ' retro-phase' : ''}`}>
+            <span class="phase-dot">●</span>{phase}
+          </span>
           {context && <span class="project-context-label">{context}</span>}
         </div>
-        <h1 class="project-page-title">{title}</h1>
+        <h1 class={`project-page-title${retro ? ' retro-title' : ''}`}>{title}</h1>
         <div class="tech-tags" style="margin-top: 20px;">
           {tags.map(tag => <span class="tech-tag">{tag}</span>)}
         </div>
       </div>
     </div>
+    {retro && <div class="retro-dot-grid" aria-hidden="true" />}
   </section>
 
   <!-- COVER + BODY: layout depends on coverLayout -->

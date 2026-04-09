@@ -479,6 +479,62 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   color: var(--ink);
 }
 
+/* ── RETRO PROJECT HERO ───────────────────────────────────── */
+.project-hero--retro {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+
+/* Horizontal colour stripes — bottom of hero, inspired by '79 poster */
+.retro-stripes {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  height: 6px;
+  pointer-events: none;
+}
+.retro-stripes span {
+  flex: 1;
+}
+.retro-stripes span:nth-child(1) { background: #C8A82A; }
+.retro-stripes span:nth-child(2) { background: #C8622A; }
+.retro-stripes span:nth-child(3) { background: var(--accent); }
+.retro-stripes span:nth-child(4) { background: #7A2A3A; }
+.retro-stripes span:nth-child(5) { background: #3A1A20; }
+
+/* Dot grid — top right corner, like the '79 poster pip grid */
+.retro-dot-grid {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 80px;
+  height: 80px;
+  background-image: radial-gradient(circle, var(--accent) 1.5px, transparent 1.5px);
+  background-size: 10px 10px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Retro phase label — filled accent pill */
+.retro-phase {
+  background: var(--accent);
+  color: #fff !important;
+  padding: 3px 10px;
+  font-size: 0.65rem;
+}
+.retro-phase .phase-dot { color: #fff; }
+
+/* Retro title — much larger, tighter tracking */
+.retro-title {
+  font-size: clamp(2.8rem, 7vw, 5.5rem) !important;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+}
+
 /* Cover image — landscape */
 .project-cover {
   border-bottom: 1px solid var(--border);
@@ -488,16 +544,11 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   border-left: 1px solid var(--border);
   border-right: 1px solid var(--border);
   overflow: hidden;
-  max-height: 600px;
-  background: var(--surface);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: var(--bg);
 }
 .cover-img {
   width: 100%;
-  max-height: 600px;
-  object-fit: contain;
+  height: auto;
   display: block;
 }
 
@@ -523,17 +574,14 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   color: var(--ink);
 }
 .portrait-image {
-  background: var(--surface);
+  background: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
-  min-height: 400px;
 }
 .portrait-image img {
-  max-width: 100%;
-  max-height: 520px;
-  object-fit: contain;
+  width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -578,12 +626,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   border-bottom: 1px solid var(--border);
   overflow: hidden;
   cursor: zoom-in;
-  background: var(--surface);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 220px;
-  max-height: 480px;
+  background: var(--bg);
 }
 .gallery-item:nth-child(2n) { border-right: none; }
 .gallery-item:nth-last-child(-n+2) { border-bottom: none; }
@@ -593,11 +636,9 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 }
 .gallery-item img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
   display: block;
   transition: transform 0.3s ease;
-  max-height: 480px;
 }
 .gallery-item:hover img { transform: scale(1.03); }
 

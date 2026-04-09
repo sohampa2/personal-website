@@ -8,6 +8,7 @@ featured: true
 order: 5
 cover: "/projects/caspian-inverted-walker/cover.jpg.png"
 coverLayout: portrait
+retro: true
 images:
   - "/projects/caspian-inverted-walker/cover.jpg.png"
   - "/projects/caspian-inverted-walker/01.jpg.png"

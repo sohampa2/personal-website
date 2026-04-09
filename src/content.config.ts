@@ -24,6 +24,7 @@ const projects = defineCollection({
     images: z.array(z.string()).default([]),
     cover: z.string().optional(),
     coverLayout: z.enum(['landscape', 'portrait']).default('landscape'),
+    retro: z.boolean().default(false),
   }),
 });
 
