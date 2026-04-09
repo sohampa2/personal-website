@@ -6,4 +6,7 @@ body: "Built a robot that traverses 8m of paracord inverted, without wheels or p
 tags: [Fusion 360, Laser Cutting, FDM 3D Printing, Python, Mechanism Design, Gait Analysis]
 featured: true
 order: 5
+cover: "/projects/caspian-inverted-walker/cover.jpg"
+images:
+  - "/projects/caspian-inverted-walker/cover.jpg"
 ---

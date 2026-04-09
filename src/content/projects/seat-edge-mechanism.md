@@ -6,4 +6,7 @@ body: "Designed an adjustable seat edge extension for 5th–95th percentile user
 tags: [FDM 3D Printing, SolidWorks, Structural Analysis, 80/20 Aluminium, Rapid Prototyping]
 featured: true
 order: 1
+cover: "/projects/seat-edge-mechanism/cover.jpg"
+images:
+  - "/projects/seat-edge-mechanism/cover.jpg"
 ---

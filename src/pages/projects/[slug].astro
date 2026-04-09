@@ -1,0 +1,239 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/global.css';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map(project => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { title, phase, context, body, tags, images, cover } = project.data;
+
+const allProjects = await getCollection('projects');
+const sorted = allProjects.sort((a, b) => a.data.order - b.data.order);
+const currentIndex = sorted.findIndex(p => p.id === project.id);
+const prev = sorted[currentIndex - 1];
+const next = sorted[currentIndex + 1];
+---
+
+<Base title={`${title} — Soham Agarwal`}>
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">S. Agarwal</a>
+        <div class="nav-right">
+          <ul class="nav-links">
+            <li><a href="/#writing">writing</a></li>
+            <li><a href="/#projects">portfolio</a></li>
+            <li><a href="/#about">about</a></li>
+            <li><a href="/#contact">contact</a></li>
+          </ul>
+          <button class="theme-toggle" id="themeBtn" aria-label="Toggle dark mode">[ dark ]</button>
+          <button class="nav-hamburger" id="hamburger" aria-label="Open menu">menu</button>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/#writing">writing</a>
+      <a href="/#projects">portfolio</a>
+      <a href="/#about">about</a>
+      <a href="/#contact">contact</a>
+    </div>
+  </nav>
+
+  <!-- PROJECT HERO -->
+  <section class="project-hero">
+    <div class="container">
+      <div class="project-hero-inner fade-in">
+        <a href="/#projects" class="back-link">← all projects</a>
+
+        <div class="project-meta-row">
+          <span class="project-phase-label"><span class="phase-dot">●</span>{phase}</span>
+          {context && <span class="project-context-label">{context}</span>}
+        </div>
+
+        <h1 class="project-page-title">{title}</h1>
+
+        <div class="tech-tags" style="margin-top: 20px;">
+          {tags.map(tag => <span class="tech-tag">{tag}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COVER IMAGE -->
+  {cover && (
+    <div class="project-cover fade-in">
+      <div class="container">
+        <div class="cover-frame">
+          <img src={cover} alt={`${title} — cover`} class="cover-img" />
+        </div>
+      </div>
+    </div>
+  )}
+
+  <!-- BODY + GALLERY -->
+  <section class="project-content">
+    <div class="container">
+      <div class="project-layout">
+
+        <!-- Body text -->
+        <div class="project-body-text fade-in">
+          <div class="body-label">Overview</div>
+          <p>{body}</p>
+        </div>
+
+        <!-- Image gallery (all images after cover) -->
+        {images.length > 1 && (
+          <div class="project-gallery fade-in" style="transition-delay:0.1s">
+            <div class="body-label">Process & Builds</div>
+            <div class="gallery-grid">
+              {images.slice(1).map((src, i) => (
+                <div class="gallery-item" data-index={i}>
+                  <img src={src} alt={`${title} — image ${i + 2}`} loading="lazy" />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- No images yet placeholder -->
+        {images.length === 0 && (
+          <div class="no-images-note">
+            <span class="body-label">Images</span>
+            <p class="muted-note">Photos coming soon.</p>
+          </div>
+        )}
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <button class="lightbox-prev" id="lightboxPrev">←</button>
+    <button class="lightbox-next" id="lightboxNext">→</button>
+    <div class="lightbox-img-wrap">
+      <img src="" alt="" id="lightboxImg" />
+    </div>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
+
+  <!-- PREV / NEXT NAV -->
+  <div class="project-pagination">
+    <div class="container">
+      <div class="pagination-inner">
+        {prev ? (
+          <a href={`/projects/${prev.id}`} class="pagination-link prev">
+            <span class="pagination-dir">← previous</span>
+            <span class="pagination-title">{prev.data.title}</span>
+          </a>
+        ) : <div />}
+        {next ? (
+          <a href={`/projects/${next.id}`} class="pagination-link next">
+            <span class="pagination-dir">next →</span>
+            <span class="pagination-title">{next.data.title}</span>
+          </a>
+        ) : <div />}
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-name">S. AGARWAL</span>
+        <span class="footer-right">MECHANICAL DESIGNER · EARTHSENSE</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Dark mode + hamburger (same as index)
+    const html = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved) html.setAttribute('data-theme', saved);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('themeBtn');
+      if (btn) {
+        btn.textContent = html.getAttribute('data-theme') === 'dark' ? '[ light ]' : '[ dark ]';
+        btn.addEventListener('click', () => {
+          const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          html.setAttribute('data-theme', next);
+          btn.textContent = next === 'dark' ? '[ light ]' : '[ dark ]';
+          localStorage.setItem('theme', next);
+        });
+      }
+
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      hamburger?.addEventListener('click', () => {
+        const open = mobileMenu?.classList.toggle('open');
+        if (hamburger) hamburger.textContent = open ? 'close' : 'menu';
+      });
+
+      // Fade-in
+      const fadeEls = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+      }, { threshold: 0.08 });
+      fadeEls.forEach(el => observer.observe(el));
+
+      // Lightbox
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg') as HTMLImageElement;
+      const lightboxCounter = document.getElementById('lightboxCounter');
+      const lightboxClose = document.getElementById('lightboxClose');
+      const lightboxPrev = document.getElementById('lightboxPrev');
+      const lightboxNext = document.getElementById('lightboxNext');
+
+      let currentIdx = 0;
+      const srcs = Array.from(galleryItems).map(item => (item.querySelector('img') as HTMLImageElement)?.src);
+
+      function openLightbox(idx: number) {
+        currentIdx = idx;
+        if (lightboxImg) lightboxImg.src = srcs[currentIdx];
+        if (lightboxCounter) lightboxCounter.textContent = `${currentIdx + 1} / ${srcs.length}`;
+        lightbox?.removeAttribute('aria-hidden');
+        lightbox?.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox?.setAttribute('aria-hidden', 'true');
+        lightbox?.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      galleryItems.forEach((item, i) => item.addEventListener('click', () => openLightbox(i)));
+      lightboxClose?.addEventListener('click', closeLightbox);
+      lightbox?.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+      lightboxPrev?.addEventListener('click', e => {
+        e.stopPropagation();
+        openLightbox((currentIdx - 1 + srcs.length) % srcs.length);
+      });
+      lightboxNext?.addEventListener('click', e => {
+        e.stopPropagation();
+        openLightbox((currentIdx + 1) % srcs.length);
+      });
+
+      document.addEventListener('keydown', e => {
+        if (!lightbox?.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') openLightbox((currentIdx - 1 + srcs.length) % srcs.length);
+        if (e.key === 'ArrowRight') openLightbox((currentIdx + 1) % srcs.length);
+      });
+    });
+  </script>
+</Base>

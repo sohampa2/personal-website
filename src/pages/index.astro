@@ -158,19 +158,25 @@ function formatDate(date: Date) {
       </div>
       <div class="project-grid fade-in" style="transition-delay:0.08s">
         {featuredProjects.map(project => (
-          <div class="project-card">
+          <a href={`/projects/${project.id}`} class="project-card project-card-link">
+            {project.data.cover && (
+              <div class="project-card-img">
+                <img src={project.data.cover} alt={project.data.title} loading="lazy" />
+              </div>
+            )}
             <div class="project-phase">
               <span class="phase-dot">●</span>{project.data.phase}
             </div>
             <div class="project-context">{project.data.context}</div>
             <h3 class="project-title">{project.data.title}</h3>
-            <p class="project-body">{project.data.body}</p>
+            <p class="project-body">{project.data.body.slice(0, 180)}…</p>
             <div class="tech-tags">
               {project.data.tags.map(tag => (
                 <span class="tech-tag">{tag}</span>
               ))}
             </div>
-          </div>
+            <div class="card-cta">view project →</div>
+          </a>
         ))}
       </div>
     </div>

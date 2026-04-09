@@ -6,4 +6,7 @@ body: "Programmed a UR3 6-DOF robot arm to draw images at 2,000-keypoint accurac
 tags: [Python, OpenCV, Inverse Kinematics, ROS, UR3, Coordinate Transforms]
 featured: true
 order: 6
+cover: "/projects/ur3-image-drawing/cover.jpg"
+images:
+  - "/projects/ur3-image-drawing/cover.jpg"
 ---
