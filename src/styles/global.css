@@ -845,7 +845,10 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   background: var(--bg);
 }
 .project-card:first-child .project-card-img {
-  border-bottom: 5px solid var(--navy);
+  border-bottom: 2px solid var(--navy);
+}
+.project-card:nth-child(2) .project-card-img {
+  border-bottom: 2px solid #4E6851;
 }
 .project-card-img img {
   width: 100%;
