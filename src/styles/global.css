@@ -526,7 +526,7 @@ nav {
 .strip-card--full {
   display: flex;
   flex-direction: column;
-  width: max-content;
+  width: min-content;
   border: 2px solid var(--ink);
   border-radius: 6px;
   overflow: hidden;
@@ -549,8 +549,6 @@ nav {
 .strip-card--full .strip-full-content {
   padding: 28px 24px;
   background: var(--bg);
-  width: 100%;
-  min-width: 0;
   overflow-wrap: break-word;
 }
 
