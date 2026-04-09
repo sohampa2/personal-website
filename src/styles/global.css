@@ -7,7 +7,7 @@
   --ink:     #1A1A15;
   --muted:   #9A9A8C;
   --accent:  #B83020;
-  --border:  #C8C2B2;
+  --border:  #A09080;
   --mono:    'IBM Plex Mono', monospace;
   --head:    'IBM Plex Sans Condensed', sans-serif;
   --body:    'IBM Plex Sans', sans-serif;
@@ -19,7 +19,7 @@
   --ink:     #E8E3D8;
   --muted:   #6A6A5C;
   --accent:  #D44030;
-  --border:  #3A3A2E;
+  --border:  #4A3A30;
 }
 
 /* ── RESET ────────────────────────────────────────────────── */
@@ -181,14 +181,15 @@ nav {
   font-family: var(--mono);
   font-size: 0.78rem;
   letter-spacing: 0.08em;
-  color: var(--accent);
-  border: 1px solid var(--accent);
+  color: #fff;
+  background: var(--accent);
+  border: 2px solid var(--accent);
   padding: 10px 22px;
   transition: background 0.15s, color 0.15s;
 }
 .btn-accent:hover {
-  background: var(--accent);
-  color: #fff;
+  background: transparent;
+  color: var(--accent);
 }
 
 /* hero right */
@@ -206,9 +207,10 @@ nav {
   font-size: 0.65rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: #fff;
+  background: var(--accent);
   padding: 10px 16px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--accent);
 }
 .currently-item {
   display: flex;
@@ -280,8 +282,10 @@ nav {
   font-size: 0.65rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--ink);
   white-space: nowrap;
+  border-left: 3px solid var(--accent);
+  padding-left: 10px;
 }
 .section-rule {
   flex: 1;
@@ -303,8 +307,10 @@ nav {
   font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--ink);
   margin-bottom: 12px;
+  border-left: 2px solid var(--accent);
+  padding-left: 8px;
 }
 .ed-title {
   font-family: var(--head);
@@ -671,10 +677,12 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   font-size: 0.65rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--ink);
   margin-bottom: 16px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  padding-left: 10px;
 }
 
 .project-body-text p {
@@ -915,6 +923,18 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 
 /* border-box util */
 .border-box { border: 1px solid var(--border); }
+
+/* ── STRUCTURAL BORDER WEIGHT ─────────────────────────────── */
+/* Outer containers get 2px — internal dividers stay 1px     */
+.editorial-grid,
+.project-grid,
+.writing-list,
+.currently-block,
+.about-meta,
+.contact-block,
+.projects-strip-section .projects-strip {
+  border-width: 2px;
+}
 
 /* ── RESPONSIVE ───────────────────────────────────────────── */
 @media (max-width: 1100px) {
