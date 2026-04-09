@@ -514,20 +514,6 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   line-height: 0.9;
 }
 
-/* Retro image borders — double-line accent frame */
-.gallery-item--retro {
-  border-color: var(--accent) !important;
-  border-width: 2px !important;
-  box-shadow: inset 0 0 0 4px var(--bg), inset 0 0 0 6px var(--accent);
-}
-.cover-frame--retro {
-  border-color: var(--accent);
-  border-width: 2px;
-  box-shadow: inset 0 0 0 4px var(--bg), inset 0 0 0 6px var(--accent);
-}
-.portrait-image--retro {
-  box-shadow: inset 0 0 0 4px var(--bg), inset 0 0 0 6px var(--accent);
-}
 
 /* Cover image — landscape */
 .project-cover {
@@ -535,17 +521,14 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   padding: 0;
 }
 .cover-frame {
-  border-left: 1px solid var(--border);
-  border-right: 1px solid var(--border);
+  border: 1px solid var(--border);
   overflow: hidden;
   background: var(--bg);
-  display: flex;
-  justify-content: center;
 }
 .cover-img {
   width: 100%;
   height: auto;
-  max-height: 520px;
+  max-height: 400px;
   object-fit: cover;
   display: block;
 }
@@ -573,9 +556,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 }
 .portrait-image {
   background: var(--bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-left: 1px solid var(--border);
 }
 .portrait-image img {
   width: 100%;
@@ -616,21 +597,16 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0;
-  border: 1px solid var(--border);
+  gap: 8px;
 }
 .gallery-item {
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  border: 1px solid var(--border);
   overflow: hidden;
   cursor: zoom-in;
   background: var(--bg);
 }
-.gallery-item:nth-child(2n) { border-right: none; }
-.gallery-item:nth-last-child(-n+2) { border-bottom: none; }
 .gallery-item:nth-last-child(1):nth-child(odd) {
   grid-column: span 2;
-  border-right: none;
 }
 .gallery-item img {
   width: 100%;

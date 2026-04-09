@@ -78,7 +78,7 @@ const next = sorted[currentIndex + 1];
             <div class="body-label">Overview</div>
             <p>{body}</p>
           </div>
-          <div class={`portrait-image${retro ? ' portrait-image--retro' : ''}`}>
+          <div class="portrait-image">
             <img src={cover} alt={`${title} — cover`} />
           </div>
         </div>
@@ -88,7 +88,7 @@ const next = sorted[currentIndex + 1];
     <!-- LANDSCAPE LAYOUT: full-width image, text below -->
     <div class="project-cover fade-in">
       <div class="container">
-        <div class={`cover-frame${retro ? ' cover-frame--retro' : ''}`}>
+        <div class="cover-frame">
           <img src={cover} alt={`${title} — cover`} class="cover-img" />
         </div>
       </div>
@@ -126,7 +126,7 @@ const next = sorted[currentIndex + 1];
             <div class="body-label">Process & Builds</div>
             <div class="gallery-grid">
               {images.slice(1).map((src, i) => (
-                <div class={`gallery-item${retro ? ' gallery-item--retro' : ''}`} data-index={i}>
+                <div class="gallery-item" data-index={i}>
                   <img src={src} alt={`${title} — image ${i + 2}`} loading="lazy" />
                 </div>
               ))}
