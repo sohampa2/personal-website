@@ -524,11 +524,13 @@ nav {
 }
 /* Strip full tile (first card) */
 .strip-card--full {
-  border: 2px solid var(--ink);
-  border-radius: 6px;
-  box-shadow: 4px 4px 0 var(--navy);
   display: flex;
   flex-direction: column;
+  width: max-content;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 4px 4px 0 var(--navy);
   transition: transform 0.15s;
 }
 .strip-card--full:hover {
@@ -537,18 +539,19 @@ nav {
 .strip-card--full .strip-img-wrap {
   border-bottom: 2px solid var(--navy);
   flex-shrink: 0;
-  overflow: hidden;
 }
 .strip-card--full .strip-img-wrap img {
   display: block;
-  height: auto;
-  max-height: 420px;
+  height: 420px;
   width: auto;
   max-width: none;
 }
 .strip-card--full .strip-full-content {
   padding: 28px 24px;
   background: var(--bg);
+  width: 100%;
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .strip-card-cta {
