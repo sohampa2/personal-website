@@ -2,14 +2,15 @@
 
 /* ── TOKENS ───────────────────────────────────────────────── */
 :root {
-  --bg:      #F0E7D5;
-  --surface: #DCC9A9;
+  --bg:      #F7F3EC;
+  --surface: #EDE3D5;
+  --tan:     #DCC9A9;
   --ink:     #1D1D1B;
   --muted:   #7A7060;
   --accent:  #B83A2D;
   --navy:    #2A2820;
   --green:   #4E6851;
-  --border:  #B8A080;
+  --border:  #C8BAA0;
   --mono:    'IBM Plex Mono', monospace;
   --head:    'Syne', sans-serif;
   --body:    'IBM Plex Sans', sans-serif;
@@ -18,6 +19,7 @@
 [data-theme="dark"] {
   --bg:      #1D1D1B;
   --surface: #2A2820;
+  --tan:     #3A3630;
   --ink:     #EDE4D4;
   --muted:   #7A7060;
   --accent:  #C84030;
@@ -209,7 +211,7 @@ t {
   border: 2px solid var(--ink);
   border-radius: 6px;
   overflow: hidden;
-  background: var(--surface);
+  background: var(--tan);
   box-shadow: 4px 4px 0 var(--navy);
 }
 .panel-label {
@@ -304,7 +306,7 @@ t {
 }
 .editorial-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 14px;
 }
 .ed-panel {
@@ -921,7 +923,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 .about-body p:last-child { margin-bottom: 0; }
 .about-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   border: 1px solid var(--border);
   margin-top: 32px;
 }
@@ -931,8 +933,8 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   border-bottom: 1px solid var(--border);
   background: var(--surface);
 }
-.about-stat-cell:nth-child(3n) { border-right: none; }
-.about-stat-cell:nth-last-child(-n+3) { border-bottom: none; }
+.about-stat-cell:nth-child(2n) { border-right: none; }
+.about-stat-cell:nth-last-child(-n+2) { border-bottom: none; }
 .about-stat-num {
   font-family: var(--head);
   font-size: 1.9rem;
@@ -951,7 +953,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   border: 2px solid var(--ink);
   border-radius: 6px;
   overflow: hidden;
-  background: var(--surface);
+  background: var(--tan);
   box-shadow: 4px 4px 0 var(--navy);
 }
 .about-meta-item {
