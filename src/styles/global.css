@@ -467,7 +467,7 @@ t {
   gap: 12px;
   overflow-x: auto;
   overflow-y: visible;
-  padding: 8px 48px 24px;
+  padding: 8px 48px 24px max(48px, calc(50vw - 576px));
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 }
@@ -544,9 +544,10 @@ t {
 }
 .strip-card--full .strip-img-wrap img {
   display: block;
-  height: 420px;
+  height: auto;
   width: auto;
-  max-width: none;
+  max-width: 560px;
+  max-height: 380px;
 }
 .strip-card--full .strip-full-content {
   padding: 28px 24px;
