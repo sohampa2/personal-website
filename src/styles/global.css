@@ -2,28 +2,28 @@
 
 /* ── TOKENS ───────────────────────────────────────────────── */
 :root {
-  --bg:      #F5EDDA;
-  --surface: #FAE3AC;
-  --ink:     #1A1A15;
+  --bg:      #F0E7D5;
+  --surface: #DCC9A9;
+  --ink:     #1D1D1B;
   --muted:   #7A7060;
-  --accent:  #D12128;
-  --navy:    #01344F;
-  --green:   #1F4D2F;
-  --border:  #9A8870;
+  --accent:  #B83A2D;
+  --navy:    #2A2820;
+  --green:   #4E6851;
+  --border:  #B8A080;
   --mono:    'IBM Plex Mono', monospace;
   --head:    'Syne', sans-serif;
   --body:    'IBM Plex Sans', sans-serif;
 }
 
 [data-theme="dark"] {
-  --bg:      #0F1218;
-  --surface: #1A2535;
-  --ink:     #E8E3D8;
-  --muted:   #6A6A5C;
-  --accent:  #E8302A;
-  --navy:    #6B9FC4;
-  --green:   #4A8A5A;
-  --border:  #2E3A4A;
+  --bg:      #1D1D1B;
+  --surface: #2A2820;
+  --ink:     #EDE4D4;
+  --muted:   #7A7060;
+  --accent:  #C84030;
+  --navy:    #4A4640;
+  --green:   #6A9874;
+  --border:  #3A3630;
 }
 
 /* ── RESET ────────────────────────────────────────────────── */
@@ -468,6 +468,7 @@ t {
   overflow-x: auto;
   overflow-y: visible;
   padding: 8px 80px 24px 10vw;
+  scroll-padding-left: 10vw;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 }
