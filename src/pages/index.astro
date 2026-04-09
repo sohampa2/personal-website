@@ -1,0 +1,190 @@
+---
+import Base from '../layouts/Base.astro';
+import '../styles/global.css';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts');
+const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const allProjects = await getCollection('projects');
+const featuredProjects = allProjects
+  .filter(p => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const latestPost = sortedPosts[0];
+const latestProject = featuredProjects[0];
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+}
+---
+
+<Base>
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">A. Morgan</a>
+        <div class="nav-right">
+          <ul class="nav-links">
+            <li><a href="#writing">writing</a></li>
+            <li><a href="#projects">portfolio</a></li>
+            <li><a href="#about">about</a></li>
+            <li><a href="#contact">contact</a></li>
+          </ul>
+          <button class="theme-toggle" id="themeBtn" aria-label="Toggle dark mode">[ dark ]</button>
+          <button class="nav-hamburger" id="hamburger" aria-label="Open menu">menu</button>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#writing">writing</a>
+      <a href="#projects">portfolio</a>
+      <a href="#about">about</a>
+      <a href="#contact">contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-left fade-in">
+          <p class="hero-kicker">BSc Mechanical Engineering · UIUC · Class of 2025</p>
+          <h1 class="hero-name">ALEX<br>MORGAN</h1>
+          <p class="hero-desc">
+            I build things that have to work in the real world — test rigs, fixtures, thermal systems.
+            Looking for my first full-time role in product development or mechanical design.
+            I also write about engineering and everything else.
+          </p>
+          <a href="#contact" class="btn-accent">get in touch →</a>
+        </div>
+
+        <div class="hero-right fade-in" style="transition-delay:0.12s">
+          <div class="currently-block">
+            <div class="panel-label">Currently</div>
+            <div class="currently-item">
+              <span class="ci-key">on the bench</span>
+              <span class="ci-val">EV battery thermal test rig</span>
+            </div>
+            <div class="currently-item">
+              <span class="ci-key">reading</span>
+              <span class="ci-val">Shop Class as Soulcraft</span>
+            </div>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat-cell">
+              <div class="stat-number">847</div>
+              <div class="stat-label">Miles run</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number">23</div>
+              <div class="stat-label">Books read</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number">6</div>
+              <div class="stat-label">Projects</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number">14</div>
+              <div class="stat-label">Countries</div>
+            </div>
+          </div>
+          <div class="stat-note">↑ updates annually</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITORIAL PANELS -->
+  <section class="editorial">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Dispatches</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="editorial-grid fade-in" style="transition-delay:0.08s">
+        <div class="ed-panel">
+          <div class="ed-tag">Latest Project</div>
+          <h3 class="ed-title">{latestProject.data.title}</h3>
+          <p class="ed-body">{latestProject.data.body.slice(0, 140)}…</p>
+          <a href="#projects" class="ed-link">view project →</a>
+        </div>
+        <div class="ed-panel">
+          <div class="ed-tag">Latest Writing</div>
+          <h3 class="ed-title">{latestPost.data.title}</h3>
+          <p class="ed-body">{latestPost.data.excerpt}</p>
+          <a href="#writing" class="ed-link">read essay →</a>
+        </div>
+        <div class="ed-panel">
+          <div class="ed-tag">From the Road</div>
+          <h3 class="ed-title">Manufacturing in Shenzhen: Notes from the Floor</h3>
+          <p class="ed-body">Three days visiting contract manufacturers in Longhua. The density of process knowledge on a single city block is genuinely hard to believe.</p>
+          <a href="#writing" class="ed-link">read dispatch →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WRITING LIST -->
+  <section class="writing" id="writing">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Writing</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="writing-list fade-in" style="transition-delay:0.08s">
+        {sortedPosts.map(post => (
+          <div class="writing-item">
+            <span class="writing-date">{formatDate(post.data.date)}</span>
+            <span class="writing-title">{post.data.title}</span>
+            <span class={`writing-tag${post.data.category === 'engineering' ? ' eng' : ''}`}>
+              {post.data.category}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Selected Work</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-grid fade-in" style="transition-delay:0.08s">
+        {featuredProjects.map(project => (
+          <div class="project-card">
+            <div class="project-phase">
+              <span class="phase-dot">●</span>{project.data.phase}
+            </div>
+            <h3 class="project-title">{project.data.title}</h3>
+            <p class="project-body">{project.data.body}</p>
+            <div class="tech-tags">
+              {project.data.tags.map(tag => (
+                <span class="tech-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ANCHORS -->
+  <div id="about" style="height:1px;margin-top:-1px;"></div>
+  <div id="contact" style="height:1px;margin-top:-1px;"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-name">A. MORGAN</span>
+        <span class="footer-right">UIUC MECHANICAL ENGINEERING · 2025</span>
+      </div>
+    </div>
+  </footer>
+</Base>

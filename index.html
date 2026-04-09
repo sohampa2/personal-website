@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex Morgan — Mechanical Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ───────────────────────────────────────────────── */
+    :root {
+      --bg:       #F2EDE3;
+      --surface:  #EAE4D8;
+      --ink:      #1A1A15;
+      --muted:    #9A9A8C;
+      --accent:   #B83020;
+      --border:   #C8C2B2;
+      --radius:   0;
+      --mono:     'IBM Plex Mono', monospace;
+      --head:     'IBM Plex Sans Condensed', sans-serif;
+      --body:     'IBM Plex Sans', sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --bg:      #16160F;
+      --surface: #1E1E16;
+      --ink:     #E8E3D8;
+      --muted:   #6A6A5C;
+      --accent:  #D44030;
+      --border:  #3A3A2E;
+    }
+
+    /* ── RESET ────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--body);
+      font-weight: 300;
+      line-height: 1.6;
+      transition: background 0.25s, color 0.25s;
+    }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── UTILITY ──────────────────────────────────────────────── */
+    .mono  { font-family: var(--mono); }
+    .head  { font-family: var(--head); font-weight: 700; }
+    .muted { color: var(--muted); }
+    .accent-text { color: var(--accent); }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .border-box {
+      border: 1px solid var(--border);
+    }
+
+    /* fade-in on scroll */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── NAV ──────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.25s;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      padding: 6px 14px;
+      border: 1px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+      border-color: var(--border);
+    }
+
+    .theme-toggle {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      background: none;
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      cursor: pointer;
+      margin-left: 16px;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+    }
+    .theme-toggle:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    /* hamburger */
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      padding: 5px 10px;
+      cursor: pointer;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-left: 12px;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:hover { color: var(--ink); }
+
+    /* ── HERO ─────────────────────────────────────────────────── */
+    .hero {
+      border-bottom: 1px solid var(--border);
+      padding: 72px 0 64px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .hero-kicker {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero-name {
+      font-family: var(--head);
+      font-size: clamp(3.2rem, 8vw, 6.5rem);
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--ink);
+      max-width: 520px;
+      margin-bottom: 36px;
+    }
+
+    .btn-accent {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 10px 22px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-accent:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* hero right */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .currently-block {
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .panel-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .currently-items {
+      padding: 0;
+    }
+
+    .currently-item {
+      display: flex;
+      flex-direction: column;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .currently-item:last-child { border-bottom: none; }
+
+    .ci-key {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .ci-val {
+      font-size: 0.88rem;
+      color: var(--ink);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .stat-cell {
+      border: 1px solid var(--border);
+      padding: 18px 16px;
+      background: var(--surface);
+      margin-top: -1px;
+      margin-left: -1px;
+    }
+
+    .stat-number {
+      font-family: var(--head);
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .stat-note {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--muted);
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-top: none;
+      background: var(--surface);
+    }
+
+    /* ── EDITORIAL PANELS ─────────────────────────────────────── */
+    .editorial {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+    }
+
+    .ed-panel {
+      padding: 28px 26px;
+      border-right: 1px solid var(--border);
+    }
+    .ed-panel:last-child { border-right: none; }
+
+    .ed-tag {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .ed-title {
+      font-family: var(--head);
+      font-size: 1.25rem;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .ed-body {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .ed-link {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.07em;
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+      transition: opacity 0.15s;
+    }
+    .ed-link:hover { opacity: 0.7; }
+
+    /* ── WRITING LIST ─────────────────────────────────────────── */
+    .writing {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .writing-list {
+      border: 1px solid var(--border);
+    }
+
+    .writing-item {
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.12s;
+    }
+    .writing-item:last-child { border-bottom: none; }
+    .writing-item:hover { background: var(--surface); }
+
+    .writing-date {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    .writing-title {
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+
+    .writing-tag {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .writing-tag.eng {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── PROJECT GRID ─────────────────────────────────────────── */
+    .projects {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+    }
+
+    .project-card {
+      padding: 32px 30px;
+      border-right: 1px solid var(--border);
+    }
+    .project-card:last-child { border-right: none; }
+
+    .project-phase {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .phase-dot {
+      color: var(--accent);
+      margin-right: 4px;
+    }
+
+    .phase-arrow {
+      margin: 0 6px;
+      color: var(--muted);
+    }
+
+    .project-title {
+      font-family: var(--head);
+      font-size: 1.45rem;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .project-body {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tech-tag {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: var(--surface);
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-name {
+      font-family: var(--head);
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+    }
+
+    .footer-right {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .editorial-grid {
+        grid-template-columns: 1fr;
+      }
+      .ed-panel {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .ed-panel:last-child { border-bottom: none; }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+      .project-card {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .project-card:last-child { border-bottom: none; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: inline-block; }
+
+      .hero { padding: 48px 0 48px; }
+      .hero-name { font-size: clamp(2.8rem, 14vw, 4rem); }
+
+      .writing-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 16px 18px;
+      }
+      .writing-date { order: 2; }
+      .writing-title { order: 1; }
+      .writing-tag { order: 3; justify-self: start; }
+
+      .stat-grid { grid-template-columns: 1fr 1fr; }
+
+      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .theme-toggle { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ───────────────────────────────────────────────────── -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">A. Morgan</a>
+        <div class="nav-right">
+          <ul class="nav-links">
+            <li><a href="#writing">writing</a></li>
+            <li><a href="#projects">portfolio</a></li>
+            <li><a href="#about">about</a></li>
+            <li><a href="#contact">contact</a></li>
+          </ul>
+          <button class="theme-toggle mono" id="themeBtn" aria-label="Toggle dark mode">[ dark ]</button>
+          <button class="nav-hamburger mono" id="hamburger" aria-label="Open menu">menu</button>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#writing" onclick="closeMobileMenu()">writing</a>
+      <a href="#projects" onclick="closeMobileMenu()">portfolio</a>
+      <a href="#about" onclick="closeMobileMenu()">about</a>
+      <a href="#contact" onclick="closeMobileMenu()">contact</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ──────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+
+        <!-- left -->
+        <div class="hero-left fade-in">
+          <p class="hero-kicker mono">BSc Mechanical Engineering · UIUC · Class of 2025</p>
+          <h1 class="hero-name head">ALEX<br>MORGAN</h1>
+          <p class="hero-desc">
+            I build things that have to work in the real world — test rigs, fixtures, thermal systems. Looking for my first full-time role in product development or mechanical design. I also write about engineering and everything else.
+          </p>
+          <a href="#contact" class="btn-accent">get in touch →</a>
+        </div>
+
+        <!-- right -->
+        <div class="hero-right fade-in" style="transition-delay:0.12s">
+
+          <div class="currently-block">
+            <div class="panel-label mono">Currently</div>
+            <div class="currently-items">
+              <div class="currently-item">
+                <span class="ci-key">on the bench</span>
+                <span class="ci-val">EV battery thermal test rig</span>
+              </div>
+              <div class="currently-item">
+                <span class="ci-key">reading</span>
+                <span class="ci-val">Shop Class as Soulcraft</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-grid" style="margin-top: -1px;">
+            <div class="stat-cell">
+              <div class="stat-number head">847</div>
+              <div class="stat-label mono">Miles run</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number head">23</div>
+              <div class="stat-label mono">Books read</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number head">6</div>
+              <div class="stat-label mono">Projects</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number head">14</div>
+              <div class="stat-label mono">Countries</div>
+            </div>
+          </div>
+          <div class="stat-note mono">↑ updates annually</div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EDITORIAL PANELS ───────────────────────────────────────── -->
+  <section class="editorial">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label mono">Dispatches</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="editorial-grid fade-in" style="transition-delay:0.08s">
+
+        <div class="ed-panel">
+          <div class="ed-tag mono">Latest Project</div>
+          <h3 class="ed-title head">EV Battery Thermal Test Rig</h3>
+          <p class="ed-body">A benchtop fixture to characterise heat rejection in 18650 cell packs under controlled discharge cycles. Aluminium water-block tooled on the Haas, data logged via LabVIEW.</p>
+          <a href="#projects" class="ed-link mono">view project →</a>
+        </div>
+
+        <div class="ed-panel">
+          <div class="ed-tag mono">Latest Writing</div>
+          <h3 class="ed-title head">Why Tolerances Are a Design Decision</h3>
+          <p class="ed-body">Every ±0.1 mm you put on a drawing is a cost you're signing off on. Most junior engineers don't think about it that way — here's why they should.</p>
+          <a href="#writing" class="ed-link mono">read essay →</a>
+        </div>
+
+        <div class="ed-panel">
+          <div class="ed-tag mono">From the Road</div>
+          <h3 class="ed-title head">Manufacturing in Shenzhen: Notes from the Floor</h3>
+          <p class="ed-body">Three days visiting contract manufacturers in Longhua. The density of process knowledge on a single city block is genuinely hard to believe.</p>
+          <a href="#writing" class="ed-link mono">read dispatch →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WRITING LIST ────────────────────────────────────────────── -->
+  <section class="writing" id="writing">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label mono">Writing</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="writing-list border-box fade-in" style="transition-delay:0.08s">
+
+        <div class="writing-item">
+          <span class="writing-date mono">Mar 2025</span>
+          <span class="writing-title">Why Tolerances Are a Design Decision</span>
+          <span class="writing-tag eng mono">Engineering</span>
+        </div>
+
+        <div class="writing-item">
+          <span class="writing-date mono">Feb 2025</span>
+          <span class="writing-title">Manufacturing in Shenzhen: Notes from the Floor</span>
+          <span class="writing-tag mono">Travel</span>
+        </div>
+
+        <div class="writing-item">
+          <span class="writing-date mono">Jan 2025</span>
+          <span class="writing-title">The Case for Building Your Own Instruments</span>
+          <span class="writing-tag eng mono">Engineering</span>
+        </div>
+
+        <div class="writing-item">
+          <span class="writing-date mono">Dec 2024</span>
+          <span class="writing-title">Six Weeks in Southeast Asia on a Budget That Matters</span>
+          <span class="writing-tag mono">Travel</span>
+        </div>
+
+        <div class="writing-item">
+          <span class="writing-date mono">Nov 2024</span>
+          <span class="writing-title">Thermal Management Is the Unsexy Core of EV Engineering</span>
+          <span class="writing-tag eng mono">Engineering</span>
+        </div>
+
+        <div class="writing-item">
+          <span class="writing-date mono">Oct 2024</span>
+          <span class="writing-title">On Finishing Crawford's Shop Class as Soulcraft</span>
+          <span class="writing-tag mono">Travel</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ───────────────────────────────────────────────── -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label mono">Selected Work</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="project-grid fade-in" style="transition-delay:0.08s">
+
+        <div class="project-card">
+          <div class="project-phase mono">
+            <span class="phase-dot">●</span>PROBLEM<span class="phase-arrow">→</span>PROTOTYPE
+          </div>
+          <h3 class="project-title head">EV Battery Thermal Test Rig</h3>
+          <p class="project-body">
+            Designed and built a benchtop fixture to characterise heat rejection in 18650 lithium-ion cell packs under controlled constant-current discharge cycles. The water-cooled aluminium cold plate was machined on a Haas VF-2, and cell temperature, coolant inlet/outlet temps, and current draw are logged simultaneously via LabVIEW at 10 Hz. Data fed directly into a MATLAB thermal model calibration pipeline.
+          </p>
+          <div class="tech-tags">
+            <span class="tech-tag mono">SolidWorks</span>
+            <span class="tech-tag mono">Haas CNC</span>
+            <span class="tech-tag mono">LabVIEW</span>
+            <span class="tech-tag mono">MATLAB</span>
+            <span class="tech-tag mono">Thermal FEA</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-phase mono">
+            <span class="phase-dot">●</span>PROBLEM<span class="phase-arrow">→</span>PROTOTYPE
+          </div>
+          <h3 class="project-title head">High-Cycle Fatigue Test Fixture</h3>
+          <p class="project-body">
+            Designed a modular four-point bending fixture for testing CFRP laminate coupons up to 10⁷ cycles on a servo-hydraulic Instron frame. Fixture geometry allows quick coupon swap (&lt;90 s) without re-zeroing load cell. Reduced per-sample test setup time by 65% vs. the previous welded-steel jig, enabling a full DOE matrix to complete within a single lab semester.
+          </p>
+          <div class="tech-tags">
+            <span class="tech-tag mono">CATIA V5</span>
+            <span class="tech-tag mono">Instron</span>
+            <span class="tech-tag mono">CFRP</span>
+            <span class="tech-tag mono">GD&amp;T</span>
+            <span class="tech-tag mono">DOE</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT (anchor) ─────────────────────────────────────────── -->
+  <div id="about" style="height:1px; margin-top:-1px;"></div>
+
+  <!-- ── CONTACT (anchor) ──────────────────────────────────────── -->
+  <div id="contact" style="height:1px; margin-top:-1px;"></div>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-name head">A. MORGAN</span>
+        <span class="footer-right mono">UIUC MECHANICAL ENGINEERING · 2025</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── DARK MODE TOGGLE ────────────────────────────────────────
+    const themeBtn = document.getElementById('themeBtn');
+    const html = document.documentElement;
+
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      html.setAttribute('data-theme', saved);
+      themeBtn.textContent = saved === 'dark' ? '[ light ]' : '[ dark ]';
+    }
+
+    themeBtn.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      themeBtn.textContent = next === 'dark' ? '[ light ]' : '[ dark ]';
+      localStorage.setItem('theme', next);
+    });
+
+    // ── MOBILE MENU ─────────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      hamburger.textContent = open ? 'close' : 'menu';
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.textContent = 'menu';
+    }
+
+    // ── SCROLL FADE-IN ──────────────────────────────────────────
+    const fadeEls = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    fadeEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
