@@ -141,6 +141,27 @@ function formatDate(date: Date) {
     </div>
   </section>
 
+  <!-- PROJECTS STRIP (experimental) -->
+  <section class="projects-strip-section">
+    <div class="strip-header container fade-in">
+      <span class="section-label">Selected Work — Strip View</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="projects-strip fade-in" style="transition-delay:0.08s">
+      {featuredProjects.filter(p => p.data.cover).map(project => (
+        <a href={`/projects/${project.id}`} class="strip-card">
+          <img src={project.data.cover} alt={project.data.title} loading="lazy" />
+          <div class="strip-card-overlay">
+            <div class="strip-card-phase"><span class="phase-dot">●</span>{project.data.phase}</div>
+            <h3 class="strip-card-title">{project.data.title}</h3>
+            <p class="strip-card-body">{project.data.body.slice(0, 100)}…</p>
+            <span class="strip-card-cta">view project →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
   <!-- WRITING -->
   <section class="writing" id="writing">
     <div class="container">

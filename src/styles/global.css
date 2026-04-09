@@ -422,6 +422,88 @@ nav {
 [data-theme="dark"] .tech-tag:nth-child(5n+4) { background: #1A0A1A; border-color: #4A2A5A; color: #9060A0; }
 [data-theme="dark"] .tech-tag:nth-child(5n+5) { background: #141418; border-color: #3A3C48; color: #8890A0; }
 
+/* ── PROJECTS STRIP ───────────────────────────────────────── */
+.projects-strip-section {
+  padding: 64px 0;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.strip-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.projects-strip {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 0 24px 16px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.projects-strip::-webkit-scrollbar { height: 4px; }
+.projects-strip::-webkit-scrollbar-track { background: var(--surface); }
+.projects-strip::-webkit-scrollbar-thumb { background: var(--border); }
+.strip-card {
+  position: relative;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.strip-card img {
+  display: block;
+  height: auto;
+  max-height: 420px;
+  width: auto;
+  max-width: none;
+}
+.strip-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(16, 16, 10, 0.88);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 22px 20px;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+.strip-card:hover .strip-card-overlay { opacity: 1; }
+.strip-card-phase {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 8px;
+}
+.strip-card-phase .phase-dot { color: var(--accent); margin-right: 4px; }
+.strip-card-title {
+  font-family: var(--head);
+  font-size: 1.1rem;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.strip-card-body {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 14px;
+}
+.strip-card-cta {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
 /* ── FOOTER ───────────────────────────────────────────────── */
 footer { border-top: 1px solid var(--border); padding: 28px 0; }
 .footer-inner {
