@@ -397,11 +397,10 @@ nav {
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 4px 4px 0 var(--navy);
-  transition: box-shadow 0.15s, transform 0.15s;
+  transition: transform 0.15s;
 }
 .project-card:hover {
-  box-shadow: none;
-  transform: translate(4px, 4px);
+  transform: translateY(-3px);
 }
 .project-phase {
   font-family: var(--mono);
@@ -523,6 +522,35 @@ nav {
   color: rgba(255,255,255,0.65);
   margin-bottom: 14px;
 }
+/* Strip full tile (first card) */
+.strip-card--full {
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: 4px 4px 0 var(--navy);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s;
+}
+.strip-card--full:hover {
+  transform: translateY(-3px);
+}
+.strip-card--full .strip-img-wrap {
+  border-bottom: 2px solid var(--navy);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.strip-card--full .strip-img-wrap img {
+  display: block;
+  height: auto;
+  max-height: 420px;
+  width: auto;
+  max-width: none;
+}
+.strip-card--full .strip-full-content {
+  padding: 28px 24px;
+  background: var(--bg);
+}
+
 .strip-card-cta {
   font-family: var(--mono);
   font-size: 0.65rem;
@@ -841,14 +869,8 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 
 .project-card-img {
   margin: -28px -24px 20px -24px;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg);
-}
-.project-card:first-child .project-card-img {
   border-bottom: 2px solid var(--navy);
-}
-.project-card:nth-child(2) .project-card-img {
-  border-bottom: 2px solid #4E6851;
+  background: var(--bg);
 }
 .project-card-img img {
   width: 100%;

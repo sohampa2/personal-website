@@ -148,16 +148,34 @@ function formatDate(date: Date) {
       <div class="section-rule"></div>
     </div>
     <div class="projects-strip fade-in" style="transition-delay:0.08s">
-      {featuredProjects.filter(p => p.data.cover).map(project => (
-        <a href={`/projects/${project.id}`} class="strip-card">
-          <img src={project.data.cover} alt={project.data.title} loading="lazy" />
-          <div class="strip-card-overlay">
-            <div class="strip-card-phase"><span class="phase-dot">●</span>{project.data.phase}</div>
-            <h3 class="strip-card-title">{project.data.title}</h3>
-            <p class="strip-card-body">{project.data.body.slice(0, 100)}…</p>
-            <span class="strip-card-cta">view project →</span>
-          </div>
-        </a>
+      {featuredProjects.filter(p => p.data.cover).map((project, i) => (
+        i === 0 ? (
+          <a href={`/projects/${project.id}`} class="strip-card strip-card--full">
+            <div class="strip-img-wrap">
+              <img src={project.data.cover} alt={project.data.title} loading="lazy" />
+            </div>
+            <div class="strip-full-content">
+              <div class="project-phase"><span class="phase-dot">●</span>{project.data.phase}</div>
+              {project.data.context && <div class="project-context">{project.data.context}</div>}
+              <h3 class="project-title">{project.data.title}</h3>
+              <p class="project-body">{project.data.body.slice(0, 180)}…</p>
+              <div class="tech-tags">
+                {project.data.tags.map(tag => <span class="tech-tag">{tag}</span>)}
+              </div>
+              <div class="card-cta">view project →</div>
+            </div>
+          </a>
+        ) : (
+          <a href={`/projects/${project.id}`} class="strip-card">
+            <img src={project.data.cover} alt={project.data.title} loading="lazy" />
+            <div class="strip-card-overlay">
+              <div class="strip-card-phase"><span class="phase-dot">●</span>{project.data.phase}</div>
+              <h3 class="strip-card-title">{project.data.title}</h3>
+              <p class="strip-card-body">{project.data.body.slice(0, 100)}…</p>
+              <span class="strip-card-cta">view project →</span>
+            </div>
+          </a>
+        )
       ))}
     </div>
   </section>
