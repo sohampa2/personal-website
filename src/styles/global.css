@@ -8,6 +8,7 @@
   --muted:   #7A7060;
   --accent:  #D12128;
   --navy:    #01344F;
+  --green:   #4E6851;
   --border:  #9A8870;
   --mono:    'IBM Plex Mono', monospace;
   --head:    'Syne', sans-serif;
@@ -21,6 +22,7 @@
   --muted:   #6A6A5C;
   --accent:  #E8302A;
   --navy:    #6B9FC4;
+  --green:   #6A9A74;
   --border:  #2E3A4A;
 }
 
@@ -178,7 +180,8 @@ nav {
   max-width: 520px;
   margin-bottom: 36px;
 }
-.btn-accent {
+.btn-accen
+t {
   display: inline-block;
   font-family: var(--mono);
   font-size: 0.78rem;
@@ -451,7 +454,6 @@ nav {
 .projects-strip-section {
   padding: 64px 0;
   border-bottom: 1px solid var(--border);
-  overflow: hidden;
 }
 .strip-header {
   display: flex;
@@ -462,10 +464,10 @@ nav {
 .projects-strip {
   display: flex;
   align-items: flex-start;
-  gap: 6px;
+  gap: 12px;
   overflow-x: auto;
   overflow-y: visible;
-  padding: 0 24px 16px;
+  padding: 8px 48px 24px;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 }
@@ -530,14 +532,14 @@ nav {
   border: 2px solid var(--ink);
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 4px 4px 0 var(--navy);
+  box-shadow: 4px 4px 0 var(--green);
   transition: transform 0.15s;
 }
 .strip-card--full:hover {
   transform: translateY(-3px);
 }
 .strip-card--full .strip-img-wrap {
-  border-bottom: 2px solid var(--navy);
+  border-bottom: 2px solid var(--green);
   flex-shrink: 0;
 }
 .strip-card--full .strip-img-wrap img {
