@@ -483,30 +483,9 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 .project-hero--retro {
   position: relative;
   overflow: hidden;
-  padding-bottom: 0;
 }
 
-/* Horizontal colour stripes — bottom of hero, inspired by '79 poster */
-.retro-stripes {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  height: 6px;
-  pointer-events: none;
-}
-.retro-stripes span {
-  flex: 1;
-}
-.retro-stripes span:nth-child(1) { background: #C8A82A; }
-.retro-stripes span:nth-child(2) { background: #C8622A; }
-.retro-stripes span:nth-child(3) { background: var(--accent); }
-.retro-stripes span:nth-child(4) { background: #7A2A3A; }
-.retro-stripes span:nth-child(5) { background: #3A1A20; }
-
-/* Dot grid — top right corner, like the '79 poster pip grid */
+/* Dot grid — top right corner */
 .retro-dot-grid {
   position: absolute;
   top: 24px;
@@ -515,7 +494,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   height: 80px;
   background-image: radial-gradient(circle, var(--accent) 1.5px, transparent 1.5px);
   background-size: 10px 10px;
-  opacity: 0.5;
+  opacity: 0.45;
   pointer-events: none;
 }
 
@@ -528,11 +507,26 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 }
 .retro-phase .phase-dot { color: #fff; }
 
-/* Retro title — much larger, tighter tracking */
+/* Retro title — larger, tighter tracking */
 .retro-title {
   font-size: clamp(2.8rem, 7vw, 5.5rem) !important;
   letter-spacing: -0.02em;
   line-height: 0.9;
+}
+
+/* Retro image borders — double-line accent frame */
+.gallery-item--retro {
+  border-color: var(--accent) !important;
+  border-width: 2px !important;
+  box-shadow: inset 0 0 0 4px var(--bg), inset 0 0 0 6px var(--accent);
+}
+.cover-frame--retro {
+  border-color: var(--accent);
+  border-width: 2px;
+  box-shadow: inset 0 0 0 4px var(--bg), inset 0 0 0 6px var(--accent);
+}
+.portrait-image--retro {
+  box-shadow: inset 0 0 0 4px var(--bg), inset 0 0 0 6px var(--accent);
 }
 
 /* Cover image — landscape */
@@ -545,10 +539,14 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   border-right: 1px solid var(--border);
   overflow: hidden;
   background: var(--bg);
+  display: flex;
+  justify-content: center;
 }
 .cover-img {
   width: 100%;
   height: auto;
+  max-height: 520px;
+  object-fit: cover;
   display: block;
 }
 
