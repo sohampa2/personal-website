@@ -1,25 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&family=Syne:wght@700;800&display=swap');
 
 /* ── TOKENS ───────────────────────────────────────────────── */
 :root {
-  --bg:      #F2EDE3;
-  --surface: #EAE4D8;
+  --bg:      #F5EDDA;
+  --surface: #FAE3AC;
   --ink:     #1A1A15;
-  --muted:   #9A9A8C;
-  --accent:  #B83020;
-  --border:  #A09080;
+  --muted:   #7A7060;
+  --accent:  #D12128;
+  --navy:    #01344F;
+  --border:  #9A8870;
   --mono:    'IBM Plex Mono', monospace;
-  --head:    'IBM Plex Sans Condensed', sans-serif;
+  --head:    'Syne', sans-serif;
   --body:    'IBM Plex Sans', sans-serif;
 }
 
 [data-theme="dark"] {
-  --bg:      #16160F;
-  --surface: #1E1E16;
+  --bg:      #0F1218;
+  --surface: #1A2535;
   --ink:     #E8E3D8;
   --muted:   #6A6A5C;
-  --accent:  #D44030;
-  --border:  #4A3A30;
+  --accent:  #E8302A;
+  --navy:    #6B9FC4;
+  --border:  #2E3A4A;
 }
 
 /* ── RESET ────────────────────────────────────────────────── */
@@ -183,13 +185,15 @@ nav {
   letter-spacing: 0.08em;
   color: #fff;
   background: var(--accent);
-  border: 2px solid var(--accent);
+  border: 2px solid var(--ink);
+  border-radius: 4px;
   padding: 10px 22px;
-  transition: background 0.15s, color 0.15s;
+  box-shadow: 3px 3px 0 var(--navy);
+  transition: box-shadow 0.12s, transform 0.12s;
 }
 .btn-accent:hover {
-  background: transparent;
-  color: var(--accent);
+  box-shadow: none;
+  transform: translate(3px, 3px);
 }
 
 /* hero right */
@@ -199,8 +203,11 @@ nav {
   gap: 0;
 }
 .currently-block {
-  border: 1px solid var(--border);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  overflow: hidden;
   background: var(--surface);
+  box-shadow: 4px 4px 0 var(--navy);
 }
 .panel-label {
   font-family: var(--mono);
@@ -284,7 +291,7 @@ nav {
   text-transform: uppercase;
   color: var(--ink);
   white-space: nowrap;
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--navy);
   padding-left: 10px;
 }
 .section-rule {
@@ -295,13 +302,19 @@ nav {
 .editorial-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border: 1px solid var(--border);
+  gap: 14px;
 }
 .ed-panel {
   padding: 28px 26px;
-  border-right: 1px solid var(--border);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: 4px 4px 0 var(--navy);
+  transition: box-shadow 0.15s, transform 0.15s;
 }
-.ed-panel:last-child { border-right: none; }
+.ed-panel:hover {
+  box-shadow: none;
+  transform: translate(4px, 4px);
+}
 .ed-tag {
   font-family: var(--mono);
   font-size: 0.62rem;
@@ -309,7 +322,7 @@ nav {
   text-transform: uppercase;
   color: var(--ink);
   margin-bottom: 12px;
-  border-left: 2px solid var(--accent);
+  border-left: 2px solid var(--navy);
   padding-left: 8px;
 }
 .ed-title {
@@ -365,6 +378,7 @@ nav {
   text-transform: uppercase;
   padding: 3px 8px;
   border: 1px solid var(--border);
+  border-radius: 3px;
   color: var(--muted);
   white-space: nowrap;
 }
@@ -375,15 +389,20 @@ nav {
 .project-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border: 1px solid var(--border);
+  gap: 14px;
 }
 .project-card {
   padding: 28px 24px;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 4px 4px 0 var(--navy);
+  transition: box-shadow 0.15s, transform 0.15s;
 }
-.project-card:nth-child(3n) { border-right: none; }
-.project-card:nth-last-child(-n+3) { border-bottom: none; }
+.project-card:hover {
+  box-shadow: none;
+  transform: translate(4px, 4px);
+}
 .project-phase {
   font-family: var(--mono);
   font-size: 0.62rem;
@@ -414,6 +433,7 @@ nav {
   text-transform: uppercase;
   padding: 4px 9px;
   border: 1px solid transparent;
+  border-radius: 3px;
   color: var(--ink);
 }
 /* retro-tech palette: amber CRT, terminal green, blueprint blue, magenta, steel */
@@ -681,7 +701,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   margin-bottom: 16px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--navy);
   padding-left: 10px;
 }
 
@@ -894,8 +914,11 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   color: var(--muted);
 }
 .about-meta {
-  border: 1px solid var(--border);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  overflow: hidden;
   background: var(--surface);
+  box-shadow: 4px 4px 0 var(--navy);
 }
 .about-meta-item {
   display: flex;
@@ -924,26 +947,10 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 /* border-box util */
 .border-box { border: 1px solid var(--border); }
 
-/* ── STRUCTURAL BORDER WEIGHT ─────────────────────────────── */
-/* Outer containers get 2px — internal dividers stay 1px     */
-.editorial-grid,
-.project-grid,
-.writing-list,
-.currently-block,
-.about-meta,
-.contact-block,
-.projects-strip-section .projects-strip {
-  border-width: 2px;
-}
 
 /* ── RESPONSIVE ───────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .project-grid { grid-template-columns: repeat(2, 1fr); }
-  .project-card { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .project-card:nth-child(3n) { border-right: 1px solid var(--border); }
-  .project-card:nth-child(2n) { border-right: none; }
-  .project-card:nth-last-child(-n+3) { border-bottom: 1px solid var(--border); }
-  .project-card:nth-last-child(-n+2) { border-bottom: none; }
 }
 
 @media (max-width: 900px) {
@@ -965,8 +972,6 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   .writing-tag { order: 3; justify-self: start; }
   .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
   .project-grid { grid-template-columns: 1fr; }
-  .project-card { border-right: none !important; border-bottom: 1px solid var(--border) !important; }
-  .project-card:last-child { border-bottom: none !important; }
 }
 
 @media (max-width: 480px) {
