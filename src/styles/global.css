@@ -8,7 +8,7 @@
   --muted:   #7A7060;
   --accent:  #D12128;
   --navy:    #01344F;
-  --green:   #4E6851;
+  --green:   #1F4D2F;
   --border:  #9A8870;
   --mono:    'IBM Plex Mono', monospace;
   --head:    'Syne', sans-serif;
@@ -22,7 +22,7 @@
   --muted:   #6A6A5C;
   --accent:  #E8302A;
   --navy:    #6B9FC4;
-  --green:   #6A9A74;
+  --green:   #4A8A5A;
   --border:  #2E3A4A;
 }
 
@@ -467,7 +467,7 @@ t {
   gap: 12px;
   overflow-x: auto;
   overflow-y: visible;
-  padding: 8px 48px 24px max(48px, calc(50vw - 576px));
+  padding: 8px 80px 24px 10vw;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 }
@@ -529,6 +529,7 @@ t {
   display: flex;
   flex-direction: column;
   width: min-content;
+  max-height: calc(100vh - 180px);
   border: 2px solid var(--ink);
   border-radius: 6px;
   overflow: hidden;
