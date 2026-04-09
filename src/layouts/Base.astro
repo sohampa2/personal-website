@@ -41,6 +41,27 @@ const { title = 'Alex Morgan — Mechanical Engineer' } = Astro.props;
         if (hamburger) hamburger.textContent = open ? 'close' : 'menu';
       });
 
+      // Stat counter animation
+      const statEls = document.querySelectorAll('.about-stat-num[data-count]');
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target as HTMLElement;
+          const target = parseInt(el.dataset.count || '0');
+          const duration = 1000;
+          const start = performance.now();
+          const tick = (now: number) => {
+            const t = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = Math.round(eased * target).toString();
+            if (t < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+          counterObserver.unobserve(el);
+        });
+      }, { threshold: 0.6 });
+      statEls.forEach(el => counterObserver.observe(el));
+
       // Fade-in on scroll
       const fadeEls = document.querySelectorAll('.fade-in');
       const observer = new IntersectionObserver((entries) => {

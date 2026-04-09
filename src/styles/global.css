@@ -200,6 +200,24 @@ t {
   box-shadow: none;
   transform: translate(3px, 3px);
 }
+.btn-green {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--green);
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  padding: 12px 26px;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: box-shadow 0.12s, transform 0.12s;
+}
+.btn-green:hover {
+  box-shadow: none;
+  transform: translate(3px, 3px);
+}
 
 /* hero right */
 .hero-right {
@@ -211,7 +229,7 @@ t {
   border: 2px solid var(--ink);
   border-radius: 6px;
   overflow: hidden;
-  background: var(--tan);
+  background: var(--surface);
   box-shadow: 4px 4px 0 var(--navy);
 }
 .panel-label {
@@ -922,29 +940,60 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 }
 .about-body p:last-child { margin-bottom: 0; }
 .about-stats {
+  margin-top: 32px;
+  border: 2px solid var(--green);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 3px 3px 0 var(--green);
+  max-width: 360px;
+}
+.stats-live-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--green);
+}
+.stats-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+.stats-live-label {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.7); }
+}
+.stats-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  border: 1px solid var(--border);
-  margin-top: 32px;
 }
 .about-stat-cell {
-  padding: 20px 18px;
+  padding: 18px 16px;
   border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  background: var(--surface);
+  background: var(--bg);
 }
 .about-stat-cell:nth-child(2n) { border-right: none; }
 .about-stat-cell:nth-last-child(-n+2) { border-bottom: none; }
 .about-stat-num {
   font-family: var(--head);
-  font-size: 1.9rem;
+  font-size: 1.75rem;
   line-height: 1;
   color: var(--ink);
   margin-bottom: 6px;
 }
 .about-stat-label {
   font-family: var(--mono);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
@@ -953,7 +1002,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   border: 2px solid var(--ink);
   border-radius: 6px;
   overflow: hidden;
-  background: var(--tan);
+  background: var(--surface);
   box-shadow: 4px 4px 0 var(--navy);
 }
 .about-meta-item {
