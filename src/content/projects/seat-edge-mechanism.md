@@ -7,6 +7,7 @@ tags: [FDM 3D Printing, SolidWorks, Structural Analysis, 80/20 Aluminium, Rapid 
 featured: true
 order: 1
 cover: "/projects/seat-edge-mechanism/cover.jpg.png"
+coverLayout: landscape
 images:
   - "/projects/seat-edge-mechanism/cover.jpg.png"
   - "/projects/seat-edge-mechanism/01.jpg.png"

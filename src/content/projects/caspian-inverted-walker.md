@@ -7,6 +7,7 @@ tags: [Fusion 360, Laser Cutting, FDM 3D Printing, Python, Mechanism Design, Gai
 featured: true
 order: 5
 cover: "/projects/caspian-inverted-walker/cover.jpg.png"
+coverLayout: portrait
 images:
   - "/projects/caspian-inverted-walker/cover.jpg.png"
   - "/projects/caspian-inverted-walker/01.jpg.png"

@@ -7,6 +7,7 @@ tags: [Python, OpenCV, Inverse Kinematics, ROS, UR3, Coordinate Transforms]
 featured: true
 order: 6
 cover: "/projects/ur3-image-drawing/cover.jpg.png"
+coverLayout: portrait
 images:
   - "/projects/ur3-image-drawing/cover.jpg.png"
   - "/projects/ur3-image-drawing/01.jpg.png"

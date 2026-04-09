@@ -7,6 +7,7 @@ tags: [SolidWorks, ANSYS FEA, Modal Analysis, CNC Al 6061, Lathe, Spring Design]
 featured: true
 order: 4
 cover: "/projects/foldable-landing-gear/cover.jpg.png"
+coverLayout: portrait
 images:
   - "/projects/foldable-landing-gear/cover.jpg.png"
   - "/projects/foldable-landing-gear/01.jpg.png"

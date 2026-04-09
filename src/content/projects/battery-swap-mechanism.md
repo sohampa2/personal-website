@@ -7,6 +7,7 @@ tags: [Fusion 360, SLA Printing, Onyx CFR, DFM, Drone Systems, Channeling Mechan
 featured: true
 order: 3
 cover: "/projects/battery-swap-mechanism/cover.jpg.png"
+coverLayout: landscape
 images:
   - "/projects/battery-swap-mechanism/cover.jpg.png"
   - "/projects/battery-swap-mechanism/01.jpg.png"
