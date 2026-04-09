@@ -27,8 +27,8 @@ function formatDate(date: Date) {
         <a href="/" class="nav-logo">S. Agarwal</a>
         <div class="nav-right">
           <ul class="nav-links">
-            <li><a href="#writing">writing</a></li>
             <li><a href="#projects">portfolio</a></li>
+            <li><a href="#writing">writing</a></li>
             <li><a href="#about">about</a></li>
             <li><a href="#contact">contact</a></li>
           </ul>
@@ -38,8 +38,8 @@ function formatDate(date: Date) {
       </div>
     </div>
     <div class="mobile-menu" id="mobileMenu">
-      <a href="#writing">writing</a>
       <a href="#projects">portfolio</a>
+      <a href="#writing">writing</a>
       <a href="#about">about</a>
       <a href="#contact">contact</a>
     </div>
@@ -65,34 +65,14 @@ function formatDate(date: Date) {
           <div class="currently-block">
             <div class="panel-label">Currently</div>
             <div class="currently-item">
-              <span class="ci-key">building</span>
+              <span class="ci-key">Building</span>
               <span class="ci-val">robots at EarthSense</span>
             </div>
             <div class="currently-item">
-              <span class="ci-key">reading</span>
-              <span class="ci-val">Shop Class as Soulcraft</span>
+              <span class="ci-key">Running</span>
+              <span class="ci-val">base miles — marathon block starts June</span>
             </div>
           </div>
-
-          <div class="stat-grid">
-            <div class="stat-cell">
-              <div class="stat-number">6</div>
-              <div class="stat-label">Projects</div>
-            </div>
-            <div class="stat-cell">
-              <div class="stat-number">3</div>
-              <div class="stat-label">Internships</div>
-            </div>
-            <div class="stat-cell">
-              <div class="stat-number">4</div>
-              <div class="stat-label">Countries</div>
-            </div>
-            <div class="stat-cell">
-              <div class="stat-number">∞</div>
-              <div class="stat-label">Print failures</div>
-            </div>
-          </div>
-          <div class="stat-note">↑ updates annually</div>
         </div>
       </div>
     </div>
@@ -128,28 +108,7 @@ function formatDate(date: Date) {
     </div>
   </section>
 
-  <!-- WRITING LIST -->
-  <section class="writing" id="writing">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-label">Writing</span>
-        <div class="section-rule"></div>
-      </div>
-      <div class="writing-list fade-in" style="transition-delay:0.08s">
-        {sortedPosts.map(post => (
-          <div class="writing-item">
-            <span class="writing-date">{formatDate(post.data.date)}</span>
-            <span class="writing-title">{post.data.title}</span>
-            <span class={`writing-tag${post.data.category === 'engineering' ? ' eng' : ''}`}>
-              {post.data.category}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
+  <!-- PROJECTS (above writing) -->
   <section class="projects" id="projects">
     <div class="container">
       <div class="section-header fade-in">
@@ -182,6 +141,27 @@ function formatDate(date: Date) {
     </div>
   </section>
 
+  <!-- WRITING -->
+  <section class="writing" id="writing">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Writing</span>
+        <div class="section-rule"></div>
+      </div>
+      <div class="writing-list fade-in" style="transition-delay:0.08s">
+        {sortedPosts.map(post => (
+          <div class="writing-item">
+            <span class="writing-date">{formatDate(post.data.date)}</span>
+            <span class="writing-title">{post.data.title}</span>
+            <span class={`writing-tag${post.data.category === 'engineering' ? ' eng' : ''}`}>
+              {post.data.category}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- ABOUT -->
   <section class="about-section" id="about">
     <div class="container">
@@ -194,7 +174,35 @@ function formatDate(date: Date) {
           <p>I'm a mechanical designer focused on building systems that move with purpose. I work across the full design cycle — from early CAD and simulations to real-world testing.</p>
           <p>My process blends engineering rigor with design intent. I care about how things function, but also how they feel, assemble, and evolve. Each project is an opportunity to solve problems simply, precisely, and meaningfully.</p>
           <p>Currently building robots at EarthSense.</p>
+
+          <div class="about-stats">
+            <div class="about-stat-cell">
+              <div class="about-stat-num">847</div>
+              <div class="about-stat-label">Miles Run</div>
+            </div>
+            <div class="about-stat-cell">
+              <div class="about-stat-num">10</div>
+              <div class="about-stat-label">Countries Visited</div>
+            </div>
+            <div class="about-stat-cell">
+              <div class="about-stat-num">~60</div>
+              <div class="about-stat-label">Prints Rejected</div>
+            </div>
+            <div class="about-stat-cell">
+              <div class="about-stat-num">30+</div>
+              <div class="about-stat-label">Prototypes Iterated</div>
+            </div>
+            <div class="about-stat-cell">
+              <div class="about-stat-num">400+</div>
+              <div class="about-stat-label">Lifts Logged</div>
+            </div>
+            <div class="about-stat-cell">
+              <div class="about-stat-num">12</div>
+              <div class="about-stat-label">Trails Completed</div>
+            </div>
+          </div>
         </div>
+
         <div class="about-meta">
           <div class="about-meta-item">
             <span class="ci-key">Tools</span>
