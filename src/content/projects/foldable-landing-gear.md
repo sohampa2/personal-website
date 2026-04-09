@@ -6,7 +6,11 @@ body: "Designed a one-hand-operable foldable landing gear for a 6 kg drone that 
 tags: [SolidWorks, ANSYS FEA, Modal Analysis, CNC Al 6061, Lathe, Spring Design]
 featured: true
 order: 4
-cover: "/projects/foldable-landing-gear/cover.jpg"
+cover: "/projects/foldable-landing-gear/cover.jpg.png"
 images:
-  - "/projects/foldable-landing-gear/cover.jpg"
+  - "/projects/foldable-landing-gear/cover.jpg.png"
+  - "/projects/foldable-landing-gear/01.jpg.png"
+  - "/projects/foldable-landing-gear/02.jpg.png"
+  - "/projects/foldable-landing-gear/03.jpg.png"
+  - "/projects/foldable-landing-gear/04.jpg.png"
 ---

@@ -6,7 +6,8 @@ body: "Designed a rapid battery swap system for a covert-operations drone where 
 tags: [Fusion 360, SLA Printing, Onyx CFR, DFM, Drone Systems, Channeling Mechanism]
 featured: true
 order: 3
-cover: "/projects/battery-swap-mechanism/cover.jpg"
+cover: "/projects/battery-swap-mechanism/cover.jpg.png"
 images:
-  - "/projects/battery-swap-mechanism/cover.jpg"
+  - "/projects/battery-swap-mechanism/cover.jpg.png"
+  - "/projects/battery-swap-mechanism/01.jpg.png"
 ---

@@ -6,7 +6,13 @@ body: "Built a three-legged walking robot inspired by TARS from Interstellar —
 tags: [Fusion 360, Arduino, Laser Cutting, Servo Control, Dynamics Analysis, Python]
 featured: true
 order: 2
-cover: "/projects/luna-v1/cover.jpg"
+cover: "/projects/luna-v1/cover.jpg.png"
 images:
-  - "/projects/luna-v1/cover.jpg"
+  - "/projects/luna-v1/cover.jpg.png"
+  - "/projects/luna-v1/01.jpg.png"
+  - "/projects/luna-v1/02.jpg.png"
+  - "/projects/luna-v1/03.jpg.png"
+  - "/projects/luna-v1/04.jpg.png"
+  - "/projects/luna-v1/Screenshot 2024-11-02 133551.png"
+  - "/projects/luna-v1/Screenshot 2024-11-02 133732.png"
 ---
