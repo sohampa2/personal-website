@@ -1068,9 +1068,9 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   .strip-card--full {
     position: static !important;
     width: 100% !important;
-    max-height: 52px;
+    height: 52px;
     overflow: hidden;
-    transition: max-height 0.22s ease;
+    transition: height 0.32s cubic-bezier(0.4, 0, 0.2, 1);
     transform: none !important;
     box-shadow: 3px 3px 0 var(--green);
     -webkit-tap-highlight-color: transparent;
@@ -1080,12 +1080,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 
   .strip-card--full:hover { transform: none; }
 
-  /* expanded card */
-  .strip-card--full.wallet-active {
-    max-height: 1500px;
-  }
-
-  /* folder tab label */
+  /* folder tab — always visible, acts as the card header */
   .wallet-tab {
     display: flex;
     align-items: center;
@@ -1112,9 +1107,6 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
     user-select: none;
     -webkit-user-select: none;
   }
-
-  /* active card: hide tab, show full content */
-  .strip-card--full.wallet-active .wallet-tab { display: none; }
 
   /* active card image: full width */
   .strip-card--full.wallet-active .strip-img-wrap img {

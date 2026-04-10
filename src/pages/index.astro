@@ -274,19 +274,19 @@ function formatDate(date: Date) {
 
 <script>
 (function () {
-  const MOBILE_BP = 640;
+  var MOBILE_BP = 640;
+  var TAB_H     = 52;
 
-  const strip = document.querySelector('.projects-strip');
+  var strip = document.querySelector('.projects-strip');
   if (!strip) return;
 
-  const cards = Array.from(strip.querySelectorAll('.strip-card--full'));
-  const hint  = document.getElementById('walletHint');
-  let active  = 0;
+  var cards  = Array.from(strip.querySelectorAll('.strip-card--full'));
+  var hint   = document.getElementById('walletHint');
+  var active = 0;
 
   // ── Touch scroll detection ──────────────────────────────
-  // Prevents a scroll gesture from being treated as a tap.
-  let touchStartY  = 0;
-  let isScrolling  = false;
+  var touchStartY = 0;
+  var isScrolling = false;
 
   document.addEventListener('touchstart', function (e) {
     touchStartY = e.touches[0].clientY;
@@ -294,29 +294,71 @@ function formatDate(date: Date) {
   }, { passive: true });
 
   document.addEventListener('touchmove', function (e) {
-    if (Math.abs(e.touches[0].clientY - touchStartY) > 8) {
-      isScrolling = true;
-    }
+    if (Math.abs(e.touches[0].clientY - touchStartY) > 8) isScrolling = true;
   }, { passive: true });
 
-  // ── Accordion logic ─────────────────────────────────────
-  function activate(i) {
-    cards[active].classList.remove('wallet-active');
-    active = i;
-    cards[active].classList.add('wallet-active');
+  // ── Height helpers ──────────────────────────────────────
+  // Measure a card's full natural height without showing the transition.
+  function measureFull(card) {
+    var prev = card.style.height;
+    card.style.transition = 'none';
+    card.style.height     = 'auto';
+    var h = card.scrollHeight;
+    card.style.height     = prev;
+    card.style.transition = '';
+    return h;
   }
 
+  function collapse(card) {
+    card.style.height = TAB_H + 'px';
+    card.classList.remove('wallet-active');
+  }
+
+  function expand(card) {
+    card.classList.add('wallet-active');
+    var fullH = measureFull(card);
+    // Force the browser to commit the current (collapsed) height,
+    // then animate to the measured full height in the next frame.
+    card.getBoundingClientRect();
+    requestAnimationFrame(function () {
+      card.style.height = fullH + 'px';
+    });
+  }
+
+  function activate(i) {
+    collapse(cards[active]);
+    active = i;
+    expand(cards[active]);
+  }
+
+  // ── Init / reset ────────────────────────────────────────
   function initMobile() {
-    cards[0].classList.add('wallet-active');
     active = 0;
+    cards.forEach(function (c) {
+      c.style.transition = 'none';
+      c.style.height     = TAB_H + 'px';
+      c.classList.remove('wallet-active');
+    });
+    // Open first card immediately, no animation
+    cards[0].classList.add('wallet-active');
+    cards[0].style.height = cards[0].scrollHeight + 'px';
+    // Re-enable transitions after paint
+    requestAnimationFrame(function () {
+      cards.forEach(function (c) { c.style.transition = ''; });
+    });
     if (hint) hint.style.display = 'block';
   }
 
   function resetDesktop() {
-    cards.forEach(c => c.classList.remove('wallet-active'));
+    cards.forEach(function (c) {
+      c.classList.remove('wallet-active');
+      c.style.height     = '';
+      c.style.transition = '';
+    });
     if (hint) hint.style.display = 'none';
   }
 
+  // ── Click / tap handler ─────────────────────────────────
   cards.forEach(function (card, i) {
     card.addEventListener('click', function (e) {
       if (window.innerWidth > MOBILE_BP) return;
@@ -325,7 +367,7 @@ function formatDate(date: Date) {
         e.preventDefault();
         activate(i);
       }
-      // active card tap → navigate naturally
+      // active card → let the <a> navigate
     });
   });
 
@@ -333,7 +375,9 @@ function formatDate(date: Date) {
 
   window.addEventListener('resize', function () {
     if (window.innerWidth <= MOBILE_BP) {
-      if (!cards.some(c => c.classList.contains('wallet-active'))) initMobile();
+      if (!cards.some(function (c) { return c.classList.contains('wallet-active'); })) {
+        initMobile();
+      }
     } else {
       resetDesktop();
     }
