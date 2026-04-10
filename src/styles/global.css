@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&family=Syne:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&family=Space+Grotesk:wght@400;500&family=Syne:wght@700;800&display=swap');
 
 /* ── TOKENS ───────────────────────────────────────────────── */
 :root {
@@ -92,10 +92,10 @@ nav {
   list-style: none;
 }
 .nav-links a {
-  font-family: var(--head);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   color: var(--muted);
   padding: 6px 14px;
   border-bottom: 2px solid transparent;
@@ -151,7 +151,7 @@ nav {
 
 /* ── HERO ─────────────────────────────────────────────────── */
 .hero {
-  border-bottom: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
   padding: 72px 0 64px;
 }
 .hero-grid {
@@ -315,13 +315,14 @@ t {
   text-transform: uppercase;
   color: var(--ink);
   white-space: nowrap;
-  border-left: 3px solid var(--navy);
+  border-left: 3px solid var(--green);
   padding-left: 10px;
 }
 .section-rule {
   flex: 1;
   height: 1px;
-  background: var(--border);
+  background: linear-gradient(to right, var(--green), var(--border));
+  opacity: 0.5;
 }
 .editorial-grid {
   display: grid;
@@ -344,9 +345,9 @@ t {
   font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: var(--green);
   margin-bottom: 12px;
-  border-left: 2px solid var(--navy);
+  border-left: 2px solid var(--green);
   padding-left: 8px;
 }
 .ed-title {
@@ -366,7 +367,7 @@ t {
   font-family: var(--mono);
   font-size: 0.7rem;
   letter-spacing: 0.07em;
-  color: var(--accent);
+  color: var(--green);
   border-bottom: 1px solid var(--accent);
   padding-bottom: 1px;
   transition: opacity 0.15s;
@@ -756,7 +757,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   margin-bottom: 16px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--border);
-  border-left: 3px solid var(--navy);
+  border-left: 3px solid var(--green);
   padding-left: 10px;
 }
 
@@ -892,7 +893,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   transition: background 0.12s;
 }
 .project-card-link:hover { background: var(--surface); }
-.project-card-link:hover .card-cta { color: var(--accent); }
+.project-card-link:hover .card-cta { color: var(--green); }
 
 .project-card-img {
   margin: -28px -24px 20px -24px;
@@ -911,7 +912,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   font-family: var(--mono);
   font-size: 0.68rem;
   letter-spacing: 0.08em;
-  color: var(--muted);
+  color: var(--green);
   margin-top: 18px;
   transition: color 0.15s;
 }
