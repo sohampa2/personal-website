@@ -943,18 +943,26 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 }
 .about-body p:last-child { margin-bottom: 0; }
 
-.about-metrics-col {
+.stats-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.stat-cell {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  padding: 16px 14px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
 }
-
-/* counter numbers inside currently-style blocks */
+.stat-cell:nth-child(2n) { border-right: none; }
+.stat-cell:nth-last-child(-n+2) { border-bottom: none; }
 .about-stat-num {
   font-family: var(--head);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   line-height: 1;
   color: var(--ink);
+  margin-bottom: 5px;
 }
 
 /* Skills rows */
