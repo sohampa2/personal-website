@@ -322,6 +322,10 @@ function formatDate(date: Date) {
     card.getBoundingClientRect();
     requestAnimationFrame(function () {
       card.style.height = fullH + 'px';
+      // Let the expansion get underway, then smoothly scroll it to center.
+      setTimeout(function () {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
     });
   }
 
