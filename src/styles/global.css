@@ -392,23 +392,9 @@ t {
 .teardown-chrome {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 12px;
+  padding: 7px 12px;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-}
-
-.chrome-dots {
-  display: flex;
-  gap: 5px;
-  flex-shrink: 0;
-}
-.chrome-dots span {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  border: 1.5px solid var(--border);
-  background: transparent;
 }
 
 .chrome-url {
@@ -421,25 +407,22 @@ t {
   white-space: nowrap;
 }
 
-/* Window body — coloured area above content */
+/* Window body — retro colour block, cycles per card */
 .teardown-window {
-  height: 80px;
-  background: var(--tan);
+  height: 100px;
   border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-[data-theme="dark"] .teardown-window { background: var(--navy); }
+/* Retro tech palette — muted, analog warmth */
+.teardown-card:nth-child(4n+1) .teardown-window { background: #7B9E87; } /* sage green  */
+.teardown-card:nth-child(4n+2) .teardown-window { background: #B85C38; } /* brick red   */
+.teardown-card:nth-child(4n+3) .teardown-window { background: #4A7FA5; } /* steel blue  */
+.teardown-card:nth-child(4n+4) .teardown-window { background: #C49A3C; } /* amber       */
 
-.teardown-window-label {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
+[data-theme="dark"] .teardown-card:nth-child(4n+1) .teardown-window { background: #4A6655; }
+[data-theme="dark"] .teardown-card:nth-child(4n+2) .teardown-window { background: #7A3A24; }
+[data-theme="dark"] .teardown-card:nth-child(4n+3) .teardown-window { background: #2E5570; }
+[data-theme="dark"] .teardown-card:nth-child(4n+4) .teardown-window { background: #8A6A22; }
 
 /* Card footer */
 .teardown-footer {

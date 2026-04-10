@@ -174,12 +174,9 @@ function formatDate(date: Date) {
         {publishedTeardowns.map(t => (
           <div class="teardown-card">
             <div class="teardown-chrome">
-              <span class="chrome-dots"><span></span><span></span></span>
               <span class="chrome-url">teardowns / {t.id}</span>
             </div>
-            <div class="teardown-window">
-              <span class="teardown-window-label">{t.data.category}</span>
-            </div>
+            <div class="teardown-window"></div>
             <div class="teardown-footer">
               <h3 class="teardown-product">{t.data.product}</h3>
               <p class="teardown-summary">{t.data.summary}</p>
