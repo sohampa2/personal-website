@@ -28,7 +28,7 @@ function formatDate(date: Date) {
         <div class="nav-right">
           <ul class="nav-links">
             <li><a href="#projects">portfolio</a></li>
-            <li><a href="#writing">writing</a></li>
+            <li><a href="#writing">teardowns</a></li>
             <li><a href="#about">about</a></li>
             <li><a href="#contact">contact</a></li>
           </ul>
@@ -39,7 +39,7 @@ function formatDate(date: Date) {
     </div>
     <div class="mobile-menu" id="mobileMenu">
       <a href="#projects">portfolio</a>
-      <a href="#writing">writing</a>
+      <a href="#writing">teardowns</a>
       <a href="#about">about</a>
       <a href="#contact">contact</a>
     </div>
@@ -87,10 +87,10 @@ function formatDate(date: Date) {
           <a href={`/projects/${latestProject.id}`} class="ed-link">view project →</a>
         </div>
         <div class="ed-panel">
-          <div class="ed-tag">Latest Writing</div>
+          <div class="ed-tag">Latest Teardown</div>
           <h3 class="ed-title">{latestPost.data.title}</h3>
           <p class="ed-body">{latestPost.data.excerpt}</p>
-          <a href="#writing" class="ed-link">read essay →</a>
+          <a href="#writing" class="ed-link">read teardown →</a>
         </div>
       </div>
     </div>
@@ -164,7 +164,7 @@ function formatDate(date: Date) {
   <section class="writing" id="writing">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-label">Writing</span>
+        <span class="section-label">Teardowns</span>
         <div class="section-rule"></div>
       </div>
       <div class="writing-list fade-in" style="transition-delay:0.08s">
