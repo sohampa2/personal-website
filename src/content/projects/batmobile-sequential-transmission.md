@@ -6,7 +6,15 @@ body: "Built for UIUC's ME 371 Robot Heptathlon, competing across five events â€
 tags: [Fusion 360, Laser Cutting, FDM 3D Printing, Servo Control, IR Remote, Fatigue Analysis, FEA, Transmission Design]
 featured: true
 order: 7
-cover: ""
+cover: "/projects/batmobile-sequential-transmission/cover.jpg.png"
 coverLayout: landscape
-images: []
+images:
+  - "/projects/batmobile-sequential-transmission/cover.jpg.png"
+  - "/projects/batmobile-sequential-transmission/01.jpg.png"
+  - "/projects/batmobile-sequential-transmission/02.jpg.png"
+  - "/projects/batmobile-sequential-transmission/03.jpg.png"
+  - "/projects/batmobile-sequential-transmission/04.jpg.png"
+  - "/projects/batmobile-sequential-transmission/05.jpg.png"
+  - "/projects/batmobile-sequential-transmission/06.jpg.png"
+  - "/projects/batmobile-sequential-transmission/07.jpg.png"
 ---
