@@ -77,10 +77,10 @@ nav {
   height: 60px;
 }
 .nav-logo {
-  font-family: var(--mono);
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
+  font-family: var(--head);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
   color: var(--ink);
 }
 .nav-right {
@@ -96,14 +96,20 @@ nav {
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: var(--muted);
+  color: var(--ink);
   padding: 6px 14px;
   border-bottom: 2px solid transparent;
   transition: color 0.15s, border-color 0.15s;
 }
 .nav-links a:hover {
-  color: var(--ink);
+  color: var(--accent);
   border-bottom-color: var(--accent);
+}
+.nav-links li:first-child a {
+  color: var(--accent);
+}
+.nav-links li:last-child a {
+  color: var(--green);
 }
 .theme-toggle {
   font-family: var(--mono);
@@ -151,7 +157,7 @@ nav {
 
 /* ── HERO ─────────────────────────────────────────────────── */
 .hero {
-  border-bottom: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
   padding: 72px 0 64px;
 }
 .hero-grid {
@@ -239,9 +245,9 @@ t {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #fff;
-  background: var(--accent);
+  background: var(--green);
   padding: 10px 16px;
-  border-bottom: 1px solid var(--accent);
+  border-bottom: 1px solid var(--green);
 }
 .currently-item {
   display: flex;
@@ -333,12 +339,11 @@ t {
   border: 2px solid var(--ink);
   border-radius: 6px;
   box-shadow: 4px 4px 0 var(--navy);
-  transition: box-shadow 0.15s, transform 0.15s;
+  transition: transform 0.15s;
 }
-.ed-panel:hover {
-  box-shadow: none;
-  transform: translate(4px, 4px);
-}
+.ed-panel:hover { transform: translateY(-3px); }
+.ed-panel:first-child { box-shadow: 4px 4px 0 var(--accent); }
+.ed-panel:last-child  { box-shadow: 4px 4px 0 var(--green); }
 .ed-tag {
   font-family: var(--mono);
   font-size: 0.62rem;
