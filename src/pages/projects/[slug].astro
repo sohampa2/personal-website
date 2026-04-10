@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { title, phase, context, body, tags, images, cover, coverLayout, retro } = project.data;
+const { title, phase, context, body, paragraphs, bodyImage, tags, images, cover, coverLayout, retro } = project.data;
 const isPortrait = coverLayout === 'portrait';
 
 const allProjects = await getCollection('projects');
@@ -76,7 +76,7 @@ const next = sorted[currentIndex + 1];
         <div class="portrait-split">
           <div class="portrait-text">
             <div class="body-label">Overview</div>
-            <p>{body}</p>
+            {paragraphs ? paragraphs.map(p => <p>{p}</p>) : body ? <p>{body}</p> : null}
           </div>
           <div class="portrait-image">
             <img src={cover} alt={`${title} — cover`} />
@@ -85,37 +85,53 @@ const next = sorted[currentIndex + 1];
       </div>
     </section>
   ) : cover ? (
-    <!-- LANDSCAPE LAYOUT: full-width image, text below -->
-    <div class="project-cover fade-in">
-      <div class="container">
-        <div class="cover-frame">
-          <img src={cover} alt={`${title} — cover`} class="cover-img" />
-        </div>
-      </div>
-    </div>
-    <section class="project-content">
-      <div class="container">
-        <div class="project-layout">
-          <div class="project-body-text fade-in">
-            <div class="body-label">Overview</div>
-            <p>{body}</p>
+    <!-- LANDSCAPE LAYOUT: full-width cover, then text (+ optional side image) below -->
+    <>
+      <div class="project-cover fade-in">
+        <div class="container">
+          <div class="cover-frame">
+            <img src={cover} alt={`${title} — cover`} class="cover-img" />
           </div>
         </div>
       </div>
-    </section>
-  ) : (
+      {(paragraphs || body) && (
+        <section class="project-content">
+          <div class="container">
+            <div class="project-layout">
+              {bodyImage ? (
+                <div class="body-with-image fade-in">
+                  <div class="body-text-col">
+                    <div class="body-label">Overview</div>
+                    {paragraphs ? paragraphs.map(p => <p>{p}</p>) : <p>{body}</p>}
+                  </div>
+                  <div class="body-img-col">
+                    <img src={bodyImage} alt={`${title} — detail`} />
+                  </div>
+                </div>
+              ) : (
+                <div class="project-body-text fade-in">
+                  <div class="body-label">Overview</div>
+                  {paragraphs ? paragraphs.map(p => <p>{p}</p>) : <p>{body}</p>}
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+    </>
+  ) : (paragraphs || body) ? (
     <!-- NO COVER: just text -->
     <section class="project-content">
       <div class="container">
         <div class="project-layout">
           <div class="project-body-text fade-in">
             <div class="body-label">Overview</div>
-            <p>{body}</p>
+            {paragraphs ? paragraphs.map(p => <p>{p}</p>) : <p>{body}</p>}
           </div>
         </div>
       </div>
     </section>
-  )}
+  ) : null}
 
   <!-- GALLERY (all images after cover) -->
   {images.length > 1 && (

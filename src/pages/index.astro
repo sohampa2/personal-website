@@ -83,7 +83,7 @@ function formatDate(date: Date) {
         <div class="ed-panel">
           <div class="ed-tag">Latest Project</div>
           <h3 class="ed-title">{latestProject.data.title}</h3>
-          <p class="ed-body">{latestProject.data.body.slice(0, 150)}…</p>
+          <p class="ed-body">{(latestProject.data.body ?? latestProject.data.paragraphs?.[0] ?? '').slice(0, 150)}…</p>
           <a href={`/projects/${latestProject.id}`} class="ed-link">view project →</a>
         </div>
         <div class="ed-panel">
@@ -116,7 +116,7 @@ function formatDate(date: Date) {
             </div>
             <div class="project-context">{project.data.context}</div>
             <h3 class="project-title">{project.data.title}</h3>
-            <p class="project-body">{project.data.body.slice(0, 180)}…</p>
+            <p class="project-body">{(project.data.body ?? project.data.paragraphs?.[0] ?? '').slice(0, 180)}…</p>
             <div class="tech-tags">
               {project.data.tags.map(tag => (
                 <span class="tech-tag">{tag}</span>
@@ -149,7 +149,7 @@ function formatDate(date: Date) {
             <div class="project-phase"><span class="phase-dot">●</span>{project.data.phase}</div>
             {project.data.context && <div class="project-context">{project.data.context}</div>}
             <h3 class="project-title">{project.data.title}</h3>
-            <p class="project-body">{project.data.body.slice(0, 80)}…</p>
+            <p class="project-body">{(project.data.body ?? project.data.paragraphs?.[0] ?? '').slice(0, 80)}…</p>
             <div class="tech-tags">
               {project.data.tags.map(tag => <span class="tech-tag">{tag}</span>)}
             </div>

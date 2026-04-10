@@ -1049,6 +1049,32 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   .theme-toggle { display: none; }
 }
 
+/* ── BODY + SIDE IMAGE ───────────────────────────────────── */
+.body-with-image {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 48px;
+  align-items: start;
+}
+
+.body-text-col .body-label { margin-bottom: 16px; }
+
+.body-text-col p + p { margin-top: 16px; }
+
+.body-img-col img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+  .body-with-image {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ── MOBILE ACCORDION ────────────────────────────────────── */
 .wallet-tab { display: none; }
 
