@@ -745,12 +745,18 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 .project-layout { display: flex; flex-direction: column; gap: 64px; max-width: 800px; }
 
 .body-label {
+  display: inline-block;
   font-family: var(--mono);
   font-size: 0.62rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 16px;
+  color: #fff;
+  background: var(--green);
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  padding: 5px 12px;
+  box-shadow: 2px 2px 0 var(--ink);
+  margin-bottom: 20px;
 }
 
 .project-body-text p {
