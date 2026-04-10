@@ -12,10 +12,6 @@ images:
   - "/projects/seat-edge-mechanism/cover.jpg.png"
   - "/projects/seat-edge-mechanism/01.jpg.png"
   - "/projects/seat-edge-mechanism/02.jpg.png"
-  - "/projects/seat-edge-mechanism/Screenshot 2025-03-03 155957.png"
-  - "/projects/seat-edge-mechanism/Screenshot 2025-03-03 160723.png"
-  - "/projects/seat-edge-mechanism/Screenshot 2025-03-04 171733.png"
-  - "/projects/seat-edge-mechanism/Screenshot 2025-03-04 172124.png"
-  - "/projects/seat-edge-mechanism/Screenshot 2025-03-07 140329.png"
-  - "/projects/seat-edge-mechanism/Screenshot 2025-04-04 190713.png"
+  - "/projects/seat-edge-mechanism/04.jpg.png"
+  - "/projects/seat-edge-mechanism/05.jpg.png"
 ---

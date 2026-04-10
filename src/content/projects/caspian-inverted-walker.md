@@ -14,4 +14,6 @@ images:
   - "/projects/caspian-inverted-walker/01.jpg.png"
   - "/projects/caspian-inverted-walker/02.jpg.png"
   - "/projects/caspian-inverted-walker/03.jpg.png"
+  - "/projects/caspian-inverted-walker/04.jpg.png"
+  - "/projects/caspian-inverted-walker/05.jpg.png"
 ---

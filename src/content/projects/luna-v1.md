@@ -15,6 +15,4 @@ images:
   - "/projects/luna-v1/02.jpg.png"
   - "/projects/luna-v1/03.jpg.png"
   - "/projects/luna-v1/04.jpg.png"
-  - "/projects/luna-v1/Screenshot 2024-11-02 133551.png"
-  - "/projects/luna-v1/Screenshot 2024-11-02 133732.png"
 ---
