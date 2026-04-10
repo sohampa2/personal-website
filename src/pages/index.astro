@@ -275,7 +275,6 @@ function formatDate(date: Date) {
 <script>
 (function () {
   const MOBILE_BP = 640;
-  const TAB_H     = 52;
 
   const strip = document.querySelector('.projects-strip');
   if (!strip) return;
@@ -284,68 +283,57 @@ function formatDate(date: Date) {
   const hint  = document.getElementById('walletHint');
   let active  = 0;
 
-  function resetDesktop() {
-    cards.forEach(c => {
-      c.style.transform = '';
-      c.style.zIndex    = '';
-      c.style.height    = '';
-      c.classList.remove('wallet-active');
-    });
-    strip.style.height = '';
-    if (hint) hint.style.display = 'none';
-  }
+  // ── Touch scroll detection ──────────────────────────────
+  // Prevents a scroll gesture from being treated as a tap.
+  let touchStartY  = 0;
+  let isScrolling  = false;
 
-  function layout() {
-    // 1. Clear all inline heights so CSS rules can apply to inactive cards
-    cards.forEach(c => { c.style.height = ''; });
+  document.addEventListener('touchstart', function (e) {
+    touchStartY = e.touches[0].clientY;
+    isScrolling = false;
+  }, { passive: true });
 
-    // 2. Toggle active class — CSS sets height:52px on :not(.wallet-active)
-    cards.forEach((c, i) => c.classList.toggle('wallet-active', i === active));
+  document.addEventListener('touchmove', function (e) {
+    if (Math.abs(e.touches[0].clientY - touchStartY) > 8) {
+      isScrolling = true;
+    }
+  }, { passive: true });
 
-    // 3. Force reflow, then measure the active card's natural height
-    const cardH = cards[active].offsetHeight;
-
-    // 4. Position every card
-    let tabIdx = 0;
-    cards.forEach((card, i) => {
-      if (i === active) {
-        card.style.transform = 'translateY(0)';
-        card.style.zIndex    = String(cards.length + 1);
-      } else {
-        card.style.transform = `translateY(${cardH + tabIdx * TAB_H}px)`;
-        card.style.zIndex    = String(cards.length - tabIdx);
-        tabIdx++;
-      }
-    });
-
-    // 5. Size the container so nothing is clipped
-    strip.style.height = `${cardH + (cards.length - 1) * TAB_H}px`;
+  // ── Accordion logic ─────────────────────────────────────
+  function activate(i) {
+    cards[active].classList.remove('wallet-active');
+    active = i;
+    cards[active].classList.add('wallet-active');
   }
 
   function initMobile() {
+    cards[0].classList.add('wallet-active');
+    active = 0;
     if (hint) hint.style.display = 'block';
-    layout();
   }
 
-  // Tap handler: inactive card → activate; active card → navigate
-  cards.forEach((card, i) => {
+  function resetDesktop() {
+    cards.forEach(c => c.classList.remove('wallet-active'));
+    if (hint) hint.style.display = 'none';
+  }
+
+  cards.forEach(function (card, i) {
     card.addEventListener('click', function (e) {
+      if (window.innerWidth > MOBILE_BP) return;
+      if (isScrolling) { e.preventDefault(); return; }
       if (i !== active) {
         e.preventDefault();
-        active = i;
-        layout();
+        activate(i);
       }
+      // active card tap → navigate naturally
     });
   });
 
-  // Init
-  if (window.innerWidth <= MOBILE_BP) {
-    initMobile();
-  }
+  if (window.innerWidth <= MOBILE_BP) initMobile();
 
   window.addEventListener('resize', function () {
     if (window.innerWidth <= MOBILE_BP) {
-      layout();
+      if (!cards.some(c => c.classList.contains('wallet-active'))) initMobile();
     } else {
       resetDesktop();
     }

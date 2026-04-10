@@ -1049,44 +1049,40 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   .theme-toggle { display: none; }
 }
 
-/* ── MOBILE WALLET STACK ─────────────────────────────────── */
+/* ── MOBILE ACCORDION ────────────────────────────────────── */
 .wallet-tab { display: none; }
 
 @media (max-width: 640px) {
   .projects-strip-section { padding: 40px 0; }
 
+  /* vertical accordion column */
   .projects-strip {
-    position: relative !important;
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
     overflow: visible !important;
+    gap: 4px;
     padding: 0 16px;
   }
 
+  /* every card collapses to just the tab by default */
   .strip-card--full {
-    position: absolute !important;
-    left: 16px;
-    right: 16px;
-    width: auto !important;
+    position: static !important;
+    width: 100% !important;
+    max-height: 52px;
     overflow: hidden;
-    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: max-height 0.22s ease;
+    transform: none !important;
     box-shadow: 3px 3px 0 var(--green);
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
-    will-change: transform;
+    cursor: pointer;
   }
 
   .strip-card--full:hover { transform: none; }
 
-  /* inactive card: only tab strip visible */
-  .strip-card--full:not(.wallet-active) {
-    height: 52px;
-    cursor: pointer;
-  }
-
-  /* active card: full height, nav on click */
+  /* expanded card */
   .strip-card--full.wallet-active {
-    overflow: hidden;
-    cursor: pointer;
+    max-height: 1500px;
   }
 
   /* folder tab label */
@@ -1095,6 +1091,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
     align-items: center;
     gap: 10px;
     height: 52px;
+    min-height: 52px;
     padding: 0 16px;
     background: var(--surface);
     border-bottom: 1px solid var(--border);
@@ -1103,7 +1100,6 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
     letter-spacing: 0.1em;
     color: var(--ink);
     flex-shrink: 0;
-    overflow: hidden;
   }
 
   .wallet-tab .phase-dot { color: var(--accent); flex-shrink: 0; }
@@ -1117,7 +1113,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
     -webkit-user-select: none;
   }
 
-  /* active card: hide the tab, show full content */
+  /* active card: hide tab, show full content */
   .strip-card--full.wallet-active .wallet-tab { display: none; }
 
   /* active card image: full width */
@@ -1134,7 +1130,6 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
     padding: 20px 16px;
   }
 
-  /* hint label below the stack */
   .wallet-hint {
     font-family: var(--mono);
     font-size: 0.6rem;
