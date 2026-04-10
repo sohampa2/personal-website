@@ -335,11 +335,12 @@ t {
 }
 .ed-panel {
   padding: 16px 20px;
-  border: 1px solid var(--border);
+  border: 2px solid var(--ink);
   border-radius: 4px;
-  transition: background 0.12s;
+  box-shadow: 3px 3px 0 var(--navy);
+  transition: box-shadow 0.15s, transform 0.15s;
 }
-.ed-panel:hover { background: var(--surface); }
+.ed-panel:hover { box-shadow: none; transform: translate(3px, 3px); }
 .ed-tag {
   font-family: var(--mono);
   font-size: 0.58rem;
@@ -368,61 +369,29 @@ t {
 /* ── TEARDOWN LIST ────────────────────────────────────────── */
 .writing { padding: 64px 0; border-bottom: 1px solid var(--border); }
 
-/* ── TEARDOWN — TABLE OF CONTENTS ────────────────────────── */
-.teardown-list {
-  border-top: 2px solid var(--ink);
-  counter-reset: teardown;
-}
+/* ── TEARDOWN — LAB NOTEBOOK ──────────────────────────────── */
+.teardown-list { display: flex; flex-direction: column; }
 
 .teardown-card {
-  display: grid;
-  grid-template-columns: 28px 1fr auto;
-  align-items: baseline;
-  gap: 20px;
-  padding: 20px 0;
+  padding: 28px 0 24px;
   border-bottom: 1px solid var(--border);
-  transition: background 0.12s;
-  counter-increment: teardown;
 }
-.teardown-card:last-child { border-bottom: none; }
-.teardown-card:hover { background: var(--surface); padding-left: 10px; padding-right: 10px; margin: 0 -10px; }
+.teardown-card:first-child { border-top: 1px solid var(--border); }
 
-/* Index number */
-.teardown-card::before {
-  content: counter(teardown, decimal-leading-zero);
+/* Section marker row: bracket label + category + date */
+.teardown-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.teardown-marker {
   font-family: var(--mono);
   font-size: 0.6rem;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  padding-top: 4px;
-}
-
-/* Centre: product name + one-line summary */
-.teardown-body { display: flex; flex-direction: column; gap: 5px; }
-
-.teardown-product {
-  font-family: var(--head);
-  font-size: 1.35rem;
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-}
-
-.teardown-summary {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.03em;
-  line-height: 1.5;
-  color: var(--muted);
-}
-
-/* Right: date + category stacked */
-.teardown-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
 .teardown-category {
@@ -430,11 +399,10 @@ t {
   font-size: 0.58rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 3px 8px;
+  padding: 2px 7px;
   border: 1px solid var(--border);
   border-radius: 3px;
   color: var(--muted);
-  white-space: nowrap;
 }
 
 .teardown-date {
@@ -442,6 +410,26 @@ t {
   font-size: 0.58rem;
   letter-spacing: 0.06em;
   color: var(--muted);
+  margin-left: auto;
+}
+
+/* Product name — section heading */
+.teardown-product {
+  font-family: var(--head);
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+/* Summary — body text, reading weight */
+.teardown-summary {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--ink);
+  max-width: 640px;
 }
 
 /* legacy */
@@ -1072,9 +1060,8 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   .nav-links { display: none; }
   .nav-hamburger { display: inline-block; }
   .hero { padding: 48px 0; }
-  .teardown-card { grid-template-columns: 20px 1fr; gap: 12px; }
-  .teardown-meta { display: none; }
-  .teardown-product { font-size: 1.1rem; }
+  .teardown-product { font-size: 1.15rem; }
+  .teardown-date { display: none; }
   .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
   .project-grid { grid-template-columns: 1fr; }
 }
