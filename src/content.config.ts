@@ -20,6 +20,8 @@ const projects = defineCollection({
     body: z.string().optional(),
     paragraphs: z.array(z.string()).optional(),
     bodyImage: z.string().optional(),
+    galleryScale: z.number().optional(),
+    imageScales: z.record(z.string(), z.number()).optional(),
     tags: z.array(z.string()),
     featured: z.boolean().default(false),
     order: z.number().default(99),

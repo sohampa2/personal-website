@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { title, phase, context, body, paragraphs, bodyImage, tags, images, cover, coverLayout, retro } = project.data;
+const { title, phase, context, body, paragraphs, bodyImage, galleryScale, imageScales, tags, images, cover, coverLayout, retro } = project.data;
 const isPortrait = coverLayout === 'portrait';
 
 const allProjects = await getCollection('projects');
@@ -141,11 +141,16 @@ const next = sorted[currentIndex + 1];
           <div class="project-gallery fade-in">
             <div class="body-label">Process & Builds</div>
             <div class="gallery-grid">
-              {images.slice(1).map((src, i) => (
-                <div class="gallery-item" data-index={i}>
-                  <img src={src} alt={`${title} — image ${i + 2}`} loading="lazy" />
-                </div>
-              ))}
+              {images.slice(1).map((src, i) => {
+                const filename = src.split('/').pop() ?? '';
+                const scale = imageScales?.[filename] ?? galleryScale ?? 1;
+                const imgStyle = scale !== 1 ? `max-width:${scale * 100}%;margin:0 auto` : undefined;
+                return (
+                  <div class="gallery-item" data-index={i}>
+                    <img src={src} alt={`${title} — image ${i + 2}`} loading="lazy" style={imgStyle} />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
