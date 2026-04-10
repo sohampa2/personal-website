@@ -1070,6 +1070,9 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
     overflow: hidden;
     transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 3px 3px 0 var(--green);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    will-change: transform;
   }
 
   .strip-card--full:hover { transform: none; }
@@ -1110,6 +1113,8 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
   }
 
   /* active card: hide the tab, show full content */

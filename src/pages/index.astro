@@ -274,27 +274,38 @@ function formatDate(date: Date) {
 
 <script>
 (function () {
-  if (window.innerWidth > 640) return;
+  const MOBILE_BP = 640;
+  const TAB_H     = 52;
 
   const strip = document.querySelector('.projects-strip');
   if (!strip) return;
 
   const cards = Array.from(strip.querySelectorAll('.strip-card--full'));
   const hint  = document.getElementById('walletHint');
-  const TAB_H = 52;
   let active  = 0;
 
-  if (hint) hint.style.display = 'block';
+  function resetDesktop() {
+    cards.forEach(c => {
+      c.style.transform = '';
+      c.style.zIndex    = '';
+      c.style.height    = '';
+      c.classList.remove('wallet-active');
+    });
+    strip.style.height = '';
+    if (hint) hint.style.display = 'none';
+  }
 
   function layout() {
-    // Mark active
+    // 1. Clear all inline heights so CSS rules can apply to inactive cards
+    cards.forEach(c => { c.style.height = ''; });
+
+    // 2. Toggle active class — CSS sets height:52px on :not(.wallet-active)
     cards.forEach((c, i) => c.classList.toggle('wallet-active', i === active));
 
-    // Measure active card's full height
-    const activeCard = cards[active];
-    activeCard.style.height = 'auto';
-    const cardH = activeCard.offsetHeight;
+    // 3. Force reflow, then measure the active card's natural height
+    const cardH = cards[active].offsetHeight;
 
+    // 4. Position every card
     let tabIdx = 0;
     cards.forEach((card, i) => {
       if (i === active) {
@@ -307,9 +318,16 @@ function formatDate(date: Date) {
       }
     });
 
+    // 5. Size the container so nothing is clipped
     strip.style.height = `${cardH + (cards.length - 1) * TAB_H}px`;
   }
 
+  function initMobile() {
+    if (hint) hint.style.display = 'block';
+    layout();
+  }
+
+  // Tap handler: inactive card → activate; active card → navigate
   cards.forEach((card, i) => {
     card.addEventListener('click', function (e) {
       if (i !== active) {
@@ -317,14 +335,20 @@ function formatDate(date: Date) {
         active = i;
         layout();
       }
-      // active card: let <a> navigate normally
     });
   });
 
-  layout();
+  // Init
+  if (window.innerWidth <= MOBILE_BP) {
+    initMobile();
+  }
 
   window.addEventListener('resize', function () {
-    if (window.innerWidth <= 640) layout();
+    if (window.innerWidth <= MOBILE_BP) {
+      layout();
+    } else {
+      resetDesktop();
+    }
   });
 })();
 </script>
