@@ -175,16 +175,18 @@ function formatDate(date: Date) {
       <div class="teardown-list fade-in" style="transition-delay:0.08s">
         {publishedTeardowns.map(t => (
           <div class="teardown-card">
-            <div class="teardown-card-top">
+            <div class="teardown-product-col">
+              <h3 class="teardown-product">{t.data.product}</h3>
               <span class="teardown-date">{formatDate(t.data.date)}</span>
-              <span class="teardown-category">{t.data.category}</span>
             </div>
-            <h3 class="teardown-product">{t.data.product}</h3>
-            <p class="teardown-summary">{t.data.summary}</p>
-            <div class="teardown-verdict">
-              <span class="verdict-label">verdict</span>
-              <span class="verdict-text">{t.data.verdict}</span>
+            <div class="teardown-body">
+              <p class="teardown-summary">{t.data.summary}</p>
+              <div class="teardown-verdict">
+                <span class="verdict-label">verdict</span>
+                <span class="verdict-text">{t.data.verdict}</span>
+              </div>
             </div>
+            <span class="teardown-category">{t.data.category}</span>
           </div>
         ))}
       </div>
