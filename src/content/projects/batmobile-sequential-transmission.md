@@ -9,7 +9,7 @@ paragraphs:
 bodyImage: "/projects/batmobile-sequential-transmission/02.jpg.png"
 tags: [Fusion 360, Laser Cutting, FDM 3D Printing, Servo Control, IR Remote, Fatigue Analysis, FEA, Transmission Design]
 featured: true
-order: 7
+order: 2
 cover: "/projects/batmobile-sequential-transmission/cover.jpg.png"
 coverLayout: landscape
 images:

@@ -12,7 +12,7 @@ imageScales:
   05.jpg.jpg: 0.6
 tags: [SolidWorks, Acrylic Fabrication, Optical Testing, Weatherproofing, UAV Camera Systems]
 featured: true
-order: 8
+order: 1
 cover: "/projects/ptz-enclosure/cover.jpg.png"
 coverLayout: landscape
 images:
