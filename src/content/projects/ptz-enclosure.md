@@ -1,6 +1,6 @@
 ---
 title: "PTZ Enclosure"
-phase: "DESIGN → FABRICATION"
+phase: "CONCEPT → FABRICATION"
 context: "EarthSense · Ground Rover Platform"
 paragraphs:
   - "A weatherproof PTZ camera enclosure designed for a ground rover operating in Mojave Desert terrain, built to read barcodes on the underside of solar panels at 2–4 meter distances. The enclosure houses a UAV-grade Pan-Tilt-Zoom camera and needed to survive dust, heat, vibration, and outdoor UV exposure."

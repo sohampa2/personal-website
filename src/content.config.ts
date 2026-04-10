@@ -11,6 +11,19 @@ const posts = defineCollection({
   }),
 });
 
+const teardowns = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/teardowns' }),
+  schema: z.object({
+    title: z.string(),
+    product: z.string(),
+    date: z.date(),
+    category: z.enum(['wearables', 'hardware', 'software', 'other']),
+    summary: z.string(),
+    verdict: z.string(),
+    draft: z.boolean().default(false),
+  }),
+});
+
 const projects = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
   schema: z.object({
@@ -32,4 +45,4 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { posts, projects };
+export const collections = { posts, teardowns, projects };
