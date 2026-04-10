@@ -138,6 +138,10 @@ function formatDate(date: Date) {
     <div class="projects-strip fade-in" style="transition-delay:0.08s">
       {featuredProjects.filter(p => p.data.cover).map(project => (
         <a href={`/projects/${project.id}`} class="strip-card strip-card--full">
+          <div class="wallet-tab">
+            <span class="phase-dot">●</span>
+            <span class="wallet-tab-title">{project.data.title}</span>
+          </div>
           <div class="strip-img-wrap">
             <img src={project.data.cover} alt={project.data.title} loading="lazy" />
           </div>
@@ -255,6 +259,9 @@ function formatDate(date: Date) {
     </div>
   </section>
 
+  <!-- WALLET STACK HINT -->
+  <p class="wallet-hint container" id="walletHint" style="display:none">tap a card to bring it forward</p>
+
   <!-- FOOTER -->
   <footer>
     <div class="container">
@@ -264,4 +271,61 @@ function formatDate(date: Date) {
       </div>
     </div>
   </footer>
+
+<script>
+(function () {
+  if (window.innerWidth > 640) return;
+
+  const strip = document.querySelector('.projects-strip');
+  if (!strip) return;
+
+  const cards = Array.from(strip.querySelectorAll('.strip-card--full'));
+  const hint  = document.getElementById('walletHint');
+  const TAB_H = 52;
+  let active  = 0;
+
+  if (hint) hint.style.display = 'block';
+
+  function layout() {
+    // Mark active
+    cards.forEach((c, i) => c.classList.toggle('wallet-active', i === active));
+
+    // Measure active card's full height
+    const activeCard = cards[active];
+    activeCard.style.height = 'auto';
+    const cardH = activeCard.offsetHeight;
+
+    let tabIdx = 0;
+    cards.forEach((card, i) => {
+      if (i === active) {
+        card.style.transform = 'translateY(0)';
+        card.style.zIndex    = String(cards.length + 1);
+      } else {
+        card.style.transform = `translateY(${cardH + tabIdx * TAB_H}px)`;
+        card.style.zIndex    = String(cards.length - tabIdx);
+        tabIdx++;
+      }
+    });
+
+    strip.style.height = `${cardH + (cards.length - 1) * TAB_H}px`;
+  }
+
+  cards.forEach((card, i) => {
+    card.addEventListener('click', function (e) {
+      if (i !== active) {
+        e.preventDefault();
+        active = i;
+        layout();
+      }
+      // active card: let <a> navigate normally
+    });
+  });
+
+  layout();
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth <= 640) layout();
+  });
+})();
+</script>
 </Base>
