@@ -5,12 +5,12 @@ context: "EarthSense · Ground Rover Platform"
 paragraphs:
   - "A weatherproof PTZ camera enclosure designed for a ground rover operating in Mojave Desert terrain, built to read barcodes on the underside of solar panels at 2–4 meter distances. The enclosure houses a UAV-grade Pan-Tilt-Zoom camera and needed to survive dust, heat, vibration, and outdoor UV exposure."
   - "The original concept used spherical acrylic domes, but physical testing across three dome geometries revealed unacceptable optical aberrations from manufacturing inconsistencies. The design pivoted to a cuboidal flat-panel assembly using high-grade acrylic (92% transparency, UV-stabilized, 3-year outdoor rating) — validated through barcode readability tests successful at 4 meters and confirmed edge/reflection analysis in direct sunlight."
-  - "Led this project in a PM capacity — coordinating the testing protocol, documenting the design pivot decision, and driving the verification roadmap covering waterproofing, dust ingress, condensation, and vibration dampening for the PTZ motors."
+  - "Led this project in an engineer + PM capacity — coordinating the testing protocol, documenting the design pivot decision, and driving the verification roadmap covering waterproofing, dust ingress, condensation, and vibration dampening for the PTZ motors."
 bodyImage: "/projects/ptz-enclosure/02.jpg.jpg"
-galleryScale: 0.8
+galleryScale: 0.9
 imageScales:
   05.jpg.jpg: 0.6
-tags: [SolidWorks, Acrylic Fabrication, Optical Testing, Weatherproofing, UAV Camera Systems]
+tags: [SolidWorks, Acrylic Fabrication, Optical Testing, IP65 Rated, Opto-Mechanical System]
 featured: true
 order: 1
 cover: "/projects/ptz-enclosure/cover.jpg.png"
