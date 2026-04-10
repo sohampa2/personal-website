@@ -84,19 +84,17 @@ function formatDate(date: Date) {
         <span class="section-label">Latest</span>
         <div class="section-rule"></div>
       </div>
-      <div class="editorial-grid fade-in" style="transition-delay:0.08s">
-        <div class="ed-panel">
-          <div class="ed-tag">Latest Project</div>
-          <h3 class="ed-title">{latestProject.data.title}</h3>
-          <p class="ed-body">{(latestProject.data.body ?? latestProject.data.paragraphs?.[0] ?? '').slice(0, 150)}…</p>
-          <a href={`/projects/${latestProject.id}`} class="ed-link">view project →</a>
-        </div>
-        <div class="ed-panel">
-          <div class="ed-tag">Latest Teardown</div>
-          <h3 class="ed-title">{latestTeardown.data.product}</h3>
-          <p class="ed-body">{latestTeardown.data.summary}</p>
-          <a href="#writing" class="ed-link">read teardown →</a>
-        </div>
+      <div class="latest-list fade-in" style="transition-delay:0.08s">
+        <a href={`/projects/${latestProject.id}`} class="latest-entry">
+          <span class="latest-tag">project</span>
+          <span class="latest-title">{latestProject.data.title}</span>
+          <span class="latest-arrow">→</span>
+        </a>
+        <a href="#writing" class="latest-entry">
+          <span class="latest-tag">teardown</span>
+          <span class="latest-title">{latestTeardown.data.product}</span>
+          <span class="latest-arrow">→</span>
+        </a>
       </div>
     </div>
   </section>
@@ -175,13 +173,18 @@ function formatDate(date: Date) {
       <div class="teardown-list fade-in" style="transition-delay:0.08s">
         {publishedTeardowns.map(t => (
           <div class="teardown-card">
-            <div class="teardown-header">
-              <span class="teardown-marker">§ teardown</span>
-              <span class="teardown-category">{t.data.category}</span>
-              <span class="teardown-date">{formatDate(t.data.date)}</span>
+            <div class="teardown-chrome">
+              <span class="chrome-dots"><span></span><span></span></span>
+              <span class="chrome-url">teardowns / {t.id}</span>
             </div>
-            <h3 class="teardown-product">{t.data.product}</h3>
-            <p class="teardown-summary">{t.data.summary}</p>
+            <div class="teardown-window">
+              <span class="teardown-window-label">{t.data.category}</span>
+            </div>
+            <div class="teardown-footer">
+              <h3 class="teardown-product">{t.data.product}</h3>
+              <p class="teardown-summary">{t.data.summary}</p>
+              <span class="teardown-cta">read teardown →</span>
+            </div>
           </div>
         ))}
       </div>
