@@ -413,16 +413,9 @@ t {
   border-bottom: 1px solid var(--border);
 }
 
-/* Retro tech palette — muted, analog warmth */
-.teardown-card:nth-child(4n+1) .teardown-window { background: #7B9E87; } /* sage green  */
-.teardown-card:nth-child(4n+2) .teardown-window { background: #B85C38; } /* brick red   */
-.teardown-card:nth-child(4n+3) .teardown-window { background: #4A7FA5; } /* steel blue  */
-.teardown-card:nth-child(4n+4) .teardown-window { background: #C49A3C; } /* amber       */
-
-[data-theme="dark"] .teardown-card:nth-child(4n+1) .teardown-window { background: #4A6655; }
-[data-theme="dark"] .teardown-card:nth-child(4n+2) .teardown-window { background: #7A3A24; }
-[data-theme="dark"] .teardown-card:nth-child(4n+3) .teardown-window { background: #2E5570; }
-[data-theme="dark"] .teardown-card:nth-child(4n+4) .teardown-window { background: #8A6A22; }
+/* Per-brand colour blocks — tied to company palette */
+/* Per-brand colour blocks — match data-brand to teardown file slug */
+.teardown-card[data-brand="whoop-4"] .teardown-window { background: #2B2B2B; } /* WHOOP: charcoal black */
 
 /* Card footer */
 .teardown-footer {

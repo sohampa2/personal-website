@@ -172,7 +172,7 @@ function formatDate(date: Date) {
       </div>
       <div class="teardown-list fade-in" style="transition-delay:0.08s">
         {publishedTeardowns.map(t => (
-          <div class="teardown-card">
+          <div class="teardown-card" data-brand={t.id}>
             <div class="teardown-chrome">
               <span class="chrome-url">teardowns / {t.id}</span>
             </div>
