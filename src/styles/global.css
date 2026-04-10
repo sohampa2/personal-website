@@ -266,6 +266,10 @@ t {
   border-left: 1px solid var(--border);
   border-right: 1px solid var(--border);
 }
+.stats-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 .stat-cell {
   border-bottom: 1px solid var(--border);
   border-right: 1px solid var(--border);
@@ -273,6 +277,7 @@ t {
   background: var(--surface);
 }
 .stat-cell:nth-child(even) { border-right: none; }
+.stat-cell:nth-last-child(-n+2) { border-bottom: none; }
 .stat-number {
   font-family: var(--head);
   font-size: 2rem;
@@ -942,12 +947,6 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   margin-bottom: 16px;
 }
 .about-body p:last-child { margin-bottom: 0; }
-
-.about-metrics-col {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
 
 /* counter numbers inside currently-style blocks */
 .about-stat-num {
