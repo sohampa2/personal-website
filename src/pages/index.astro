@@ -86,7 +86,7 @@ function formatDate(date: Date) {
           <div class="ed-tag">Latest Project</div>
           <h3 class="ed-title">{latestProject.data.title}</h3>
           <p class="ed-body">{latestProject.data.body.slice(0, 150)}…</p>
-          <a href="#projects" class="ed-link">view project →</a>
+          <a href={`/projects/${latestProject.id}`} class="ed-link">view project →</a>
         </div>
         <div class="ed-panel">
           <div class="ed-tag">Latest Writing</div>
@@ -252,7 +252,7 @@ function formatDate(date: Date) {
       </div>
       <div class="contact-block border-box fade-in" style="transition-delay:0.08s">
         <p class="contact-line">Open to full-time roles in mechanical design and product development.</p>
-        <a href="mailto:soham@example.com" class="btn-green">get in touch →</a>
+        <a href="mailto:a.soham703@gmail.com" class="btn-green">get in touch →</a>
       </div>
     </div>
   </section>
