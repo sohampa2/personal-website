@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&family=Syne:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&family=Syne:wght@700;800&display=swap');
 
 /* ── TOKENS ───────────────────────────────────────────────── */
 :root {
@@ -339,6 +339,11 @@ t {
   font-weight: 800;
   line-height: 1.05;
   color: var(--ink);
+}
+/* trial font on first section only */
+.editorial .section-display-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
 }
 /* contact-header — scoped to contact section */
 .contact-header {
