@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&family=Syne:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Playfair+Display:wght@700&family=Fraunces:opsz,wght@9..144,700&family=Cormorant+Garamond:wght@700&family=Lora:wght@700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&family=Syne:wght@700;800&display=swap');
 
 /* ── TOKENS ───────────────────────────────────────────────── */
 :root {
@@ -340,11 +340,29 @@ t {
   line-height: 1.05;
   color: var(--ink);
 }
-/* trial font on first section only */
-.editorial .section-display-title {
-  font-family: 'DM Serif Display', Georgia, serif;
-  font-weight: 400;
+/* font trial rows */
+.font-trial { display: flex; flex-direction: column; gap: 4px; margin-bottom: 40px; }
+.font-trial-row { display: flex; align-items: baseline; gap: 16px; }
+.font-trial-label {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  width: 140px;
+  flex-shrink: 0;
+  text-transform: uppercase;
 }
+.font-trial-title {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--ink);
+}
+.ft-dm       { font-family: 'DM Serif Display', serif; font-weight: 400; }
+.ft-playfair { font-family: 'Playfair Display', serif; }
+.ft-fraunces { font-family: 'Fraunces', serif; }
+.ft-cormorant{ font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5.5vw, 3.8rem); }
+.ft-lora     { font-family: 'Lora', serif; }
 /* contact-header — scoped to contact section */
 .contact-header {
   display: flex;
