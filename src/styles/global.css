@@ -309,28 +309,6 @@ t {
 }
 .section-header {
   display: flex;
-  align-items: baseline;
-  gap: 16px;
-  margin-bottom: 32px;
-}
-.section-label {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink);
-  white-space: nowrap;
-  border-left: 3px solid var(--navy);
-  padding-left: 10px;
-}
-.section-rule {
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
-/* contact-header — kicker + display title used only in contact section */
-.contact-header {
-  display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 40px;
@@ -347,12 +325,27 @@ t {
   color: var(--accent);
   line-height: 1;
 }
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.section-rule { display: none; }
 .section-display-title {
   font-family: var(--head);
   font-size: clamp(2rem, 4.5vw, 3.2rem);
   font-weight: 800;
   line-height: 1.05;
   color: var(--ink);
+}
+/* contact-header — scoped to contact section */
+.contact-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 40px;
 }
 /* Latest — newspaper entries */
 .latest-list {
@@ -548,8 +541,8 @@ t {
 }
 .strip-header {
   display: flex;
-  align-items: baseline;
-  gap: 16px;
+  flex-direction: column;
+  gap: 10px;
   margin-bottom: 32px;
 }
 .projects-strip {
@@ -1069,11 +1062,7 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   background: #1A1712;
   border-bottom: none;
 }
-.contact-section .section-label {
-  color: rgba(237,228,212,0.5);
-  border-left: none;
-  padding-left: 0;
-}
+.contact-section .section-label { color: rgba(237,228,212,0.5); }
 .contact-section .section-display-title { color: #EDE4D4; }
 .contact-body {
   font-family: var(--mono);
