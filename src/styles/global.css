@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Playfair+Display:wght@700&family=Fraunces:opsz,wght@9..144,700&family=Cormorant+Garamond:wght@700&family=Lora:wght@700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&family=Syne:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Bodoni+Moda:opsz,wght@6..96,700&family=Spectral:wght@700&family=Libre+Baskerville:wght@700&family=EB+Garamond:wght@700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&family=Syne:wght@700;800&display=swap');
 
 /* ── TOKENS ───────────────────────────────────────────────── */
 :root {
@@ -358,11 +358,11 @@ t {
   line-height: 1.05;
   color: var(--ink);
 }
-.ft-dm       { font-family: 'DM Serif Display', serif; font-weight: 400; }
-.ft-playfair { font-family: 'Playfair Display', serif; }
-.ft-fraunces { font-family: 'Fraunces', serif; }
-.ft-cormorant{ font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5.5vw, 3.8rem); }
-.ft-lora     { font-family: 'Lora', serif; }
+.ft-playfair   { font-family: 'Playfair Display', serif; }
+.ft-bodoni     { font-family: 'Bodoni Moda', serif; }
+.ft-spectral   { font-family: 'Spectral', serif; }
+.ft-baskerville{ font-family: 'Libre Baskerville', serif; }
+.ft-garamond   { font-family: 'EB Garamond', serif; font-size: clamp(2.4rem, 5.5vw, 3.8rem); }
 /* contact-header — scoped to contact section */
 .contact-header {
   display: flex;
