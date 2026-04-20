@@ -9,7 +9,7 @@
   --muted:   #7A7060;
   --accent:  #B83A2D;
   --navy:    #2A2820;
-  --green:   #4E6851;
+  --green:   #2E5339;
   --border:  #C8BAA0;
   --mono:    'IBM Plex Mono', monospace;
   --head:    'Syne', sans-serif;
@@ -25,7 +25,7 @@
   --muted:   #7A7060;
   --accent:  #C84030;
   --navy:    #4A4640;
-  --green:   #6A9874;
+  --green:   #4E7A58;
   --border:  #3A3630;
 }
 
@@ -174,7 +174,7 @@ nav {
   font-size: clamp(3.2rem, 8vw, 6.5rem);
   font-weight: 400;
   line-height: 0.92;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.06em;
   color: var(--ink);
   margin-bottom: 28px;
 }
@@ -338,10 +338,11 @@ t {
 }
 .section-rule { display: none; }
 .section-display-title {
-  font-family: var(--display);
-  font-size: clamp(2rem, 4.5vw, 3.2rem);
-  font-weight: 700;
+  font-family: 'Anton', var(--display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 400;
   line-height: 1.05;
+  letter-spacing: 0.05em;
   color: var(--ink);
 }
 /* contact-header — scoped to contact section */
