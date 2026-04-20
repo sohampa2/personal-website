@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { title, phase, context, body, paragraphs, bodyImage, galleryScale, imageScales, tags, images, cover, coverLayout, retro } = project.data;
+const { title, phase, context, body, paragraphs, bodyImage, galleryScale, imageScales, tags, images, cover, coverLayout, retro, video } = project.data;
 const isPortrait = coverLayout === 'portrait';
 
 const allProjects = await getCollection('projects');
@@ -181,6 +181,28 @@ const next = sorted[currentIndex + 1];
     </div>
     <div class="lightbox-counter" id="lightboxCounter"></div>
   </div>
+
+  <!-- VIDEO -->
+  {video && (
+    <section class="project-content" style="padding-top: 0;">
+      <div class="container">
+        <div class="project-layout">
+          <div class="fade-in">
+            <div class="body-label">In Action</div>
+            <div class="project-video-wrap">
+              <iframe
+                src={`https://www.youtube.com/embed/${video}`}
+                title="Project video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- PREV / NEXT NAV -->
   <div class="project-pagination">

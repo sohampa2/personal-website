@@ -8,6 +8,7 @@ featured: true
 order: 8
 cover: "/projects/ur3-image-drawing/cover.jpg.png"
 coverLayout: portrait
+video: "H4aQ9aMl73c"
 images:
   - "/projects/ur3-image-drawing/cover.jpg.png"
   - "/projects/ur3-image-drawing/01.jpg.png"

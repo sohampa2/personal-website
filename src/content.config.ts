@@ -42,6 +42,7 @@ const projects = defineCollection({
     cover: z.string().optional(),
     coverLayout: z.enum(['landscape', 'portrait']).default('landscape'),
     retro: z.boolean().default(false),
+    video: z.string().optional(),
   }),
 });
 
