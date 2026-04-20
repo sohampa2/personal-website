@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&family=Syne:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&family=Syne:wght@700;800&display=swap');
 
 /* ── TOKENS ───────────────────────────────────────────────── */
 :root {
@@ -67,7 +67,7 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--bg);
+  background: var(--green);
   border-bottom: 3px solid var(--ink);
   transition: background 0.25s;
 }
@@ -82,7 +82,7 @@ nav {
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.05em;
-  color: var(--ink);
+  color: #fff;
 }
 .nav-right {
   display: flex;
@@ -97,58 +97,58 @@ nav {
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: var(--muted);
+  color: rgba(255,255,255,0.75);
   padding: 6px 14px;
   border-bottom: 2px solid transparent;
   transition: color 0.15s, border-color 0.15s;
 }
 .nav-links a:hover {
-  color: var(--ink);
-  border-bottom-color: var(--accent);
+  color: #fff;
+  border-bottom-color: #fff;
 }
 .theme-toggle {
   font-family: var(--mono);
   font-size: 0.7rem;
   letter-spacing: 0.08em;
-  color: var(--muted);
+  color: rgba(255,255,255,0.55);
   background: none;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255,255,255,0.3);
   padding: 4px 10px;
   cursor: pointer;
   margin-left: 16px;
   transition: color 0.15s, border-color 0.15s;
 }
 .theme-toggle:hover {
-  color: var(--ink);
-  border-color: var(--ink);
+  color: #fff;
+  border-color: rgba(255,255,255,0.8);
 }
 .nav-hamburger {
   display: none;
   background: none;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255,255,255,0.3);
   padding: 5px 10px;
   cursor: pointer;
   font-family: var(--mono);
   font-size: 0.7rem;
-  color: var(--muted);
+  color: rgba(255,255,255,0.55);
   margin-left: 12px;
 }
 .mobile-menu {
   display: none;
   flex-direction: column;
-  border-top: 1px solid var(--border);
-  background: var(--bg);
+  border-top: 1px solid rgba(255,255,255,0.15);
+  background: var(--green);
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
   font-family: var(--mono);
   font-size: 0.8rem;
   letter-spacing: 0.06em;
-  color: var(--muted);
+  color: rgba(255,255,255,0.7);
   padding: 14px 24px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-.mobile-menu a:hover { color: var(--ink); }
+.mobile-menu a:hover { color: #fff; }
 
 /* ── HERO ─────────────────────────────────────────────────── */
 .hero {
@@ -170,10 +170,11 @@ nav {
   margin-bottom: 18px;
 }
 .hero-name {
-  font-family: var(--head);
+  font-family: 'Anton', var(--head);
   font-size: clamp(3.2rem, 8vw, 6.5rem);
+  font-weight: 400;
   line-height: 0.92;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.02em;
   color: var(--ink);
   margin-bottom: 28px;
 }
