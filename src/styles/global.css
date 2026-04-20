@@ -441,6 +441,7 @@ t {
 /* Per-brand colour blocks — tied to company palette */
 /* Per-brand colour blocks — match data-brand to teardown file slug */
 .teardown-card[data-brand="whoop-4"] .teardown-window { background: #2B2B2B; } /* WHOOP: charcoal black */
+.teardown-card[data-brand="whoop-5"] .teardown-window { background: #2B2B2B; }
 
 /* Card footer */
 .teardown-footer {
