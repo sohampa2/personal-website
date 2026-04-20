@@ -1,6 +1,6 @@
 ---
-title: "WHOOP 4.0 — Teardown"
-product: "WHOOP 4.0"
+title: "WHOOP 5.0 — Teardown"
+product: "WHOOP 5.0"
 date: 2026-04-10
 category: wearables
 summary: "A fitness tracker that charges while you wear it — but the hardware story underneath is more interesting than the marketing."
