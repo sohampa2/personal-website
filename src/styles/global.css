@@ -9,7 +9,7 @@
   --muted:   #7A7060;
   --accent:  #B83A2D;
   --navy:    #2A2820;
-  --green:   #2E5339;
+  --green:   #2C4632;
   --border:  #C8BAA0;
   --mono:    'IBM Plex Mono', monospace;
   --head:    'Syne', sans-serif;
@@ -343,6 +343,7 @@ t {
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: var(--ink);
 }
 /* contact-header — scoped to contact section */
