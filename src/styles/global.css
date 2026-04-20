@@ -183,6 +183,8 @@ nav {
   color: var(--ink);
   max-width: 520px;
   margin-bottom: 36px;
+  border-left: 3px solid var(--green);
+  padding-left: 20px;
 }
 .btn-accen
 t {
