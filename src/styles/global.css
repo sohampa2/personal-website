@@ -987,13 +987,18 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
 
 .about-top-grid {
   display: grid;
-  grid-template-columns: 220px 1fr 300px;
-  gap: 40px;
+  grid-template-columns: 1fr 300px;
+  gap: 48px;
   align-items: start;
   margin-bottom: 36px;
 }
+.about-left {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
 .about-photo {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   border: 2px solid var(--ink);
   background: var(--surface);
@@ -1129,7 +1134,6 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .teardown-list { grid-template-columns: 1fr; }
   .about-top-grid { grid-template-columns: 1fr; }
-  .about-photo { aspect-ratio: 4 / 3; max-width: 320px; }
   .skills-label { width: 110px; font-size: 0.58rem; }
   .contact-block { flex-direction: column; align-items: flex-start; }
 }
