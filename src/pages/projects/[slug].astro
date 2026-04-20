@@ -133,32 +133,63 @@ const next = sorted[currentIndex + 1];
     </section>
   ) : null}
 
-  <!-- GALLERY (all images after cover) -->
-  {images.length > 1 && (
+  <!-- GALLERY + VIDEO (merged) -->
+  {(images.length > 1 || video) && (
     <section class="project-content" style="padding-top: 0;">
       <div class="container">
         <div class="project-layout">
           <div class="project-gallery fade-in">
             <div class="body-label">Process & Builds</div>
-            <div class="gallery-grid">
-              {images.slice(1).map((src, i) => {
-                const filename = src.split('/').pop() ?? '';
-                const scale = imageScales?.[filename] ?? galleryScale ?? 1;
-                const imgStyle = scale !== 1 ? `max-width:${scale * 100}%;margin:0 auto` : undefined;
-                return (
-                  <div class="gallery-item" data-index={i}>
-                    <img src={src} alt={`${title} — image ${i + 2}`} loading="lazy" style={imgStyle} />
-                  </div>
-                );
-              })}
-            </div>
+            {(video && images.length > 1) ? (
+              <div class="process-grid">
+                <div class="project-video-wrap">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${video}`}
+                    title="Project video"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <div class="process-images">
+                  {images.slice(1).map((src, i) => (
+                    <div class="gallery-item" data-index={i}>
+                      <img src={src} alt={`${title} — image ${i + 2}`} loading="lazy" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : video ? (
+              <div class="project-video-wrap">
+                <iframe
+                  src={`https://www.youtube.com/embed/${video}`}
+                  title="Project video"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            ) : (
+              <div class="gallery-grid">
+                {images.slice(1).map((src, i) => {
+                  const filename = src.split('/').pop() ?? '';
+                  const scale = imageScales?.[filename] ?? galleryScale ?? 1;
+                  const imgStyle = scale !== 1 ? `max-width:${scale * 100}%;margin:0 auto` : undefined;
+                  return (
+                    <div class="gallery-item" data-index={i}>
+                      <img src={src} alt={`${title} — image ${i + 2}`} loading="lazy" style={imgStyle} />
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
       </div>
     </section>
   )}
 
-  {images.length === 0 && (
+  {images.length === 0 && !video && (
     <section class="project-content" style="padding-top: 0;">
       <div class="container">
         <div class="project-layout">
@@ -181,28 +212,6 @@ const next = sorted[currentIndex + 1];
     </div>
     <div class="lightbox-counter" id="lightboxCounter"></div>
   </div>
-
-  <!-- VIDEO -->
-  {video && (
-    <section class="project-content" style="padding-top: 0;">
-      <div class="container">
-        <div class="project-layout">
-          <div class="fade-in">
-            <div class="body-label">In Action</div>
-            <div class="project-video-wrap">
-              <iframe
-                src={`https://www.youtube.com/embed/${video}`}
-                title="Project video"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )}
 
   <!-- PREV / NEXT NAV -->
   <div class="project-pagination">
