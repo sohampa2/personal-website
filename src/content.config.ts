@@ -35,6 +35,7 @@ const projects = defineCollection({
     bodyImage: z.string().optional(),
     galleryScale: z.number().optional(),
     imageScales: z.record(z.string(), z.number()).optional(),
+    imageAlignments: z.record(z.string(), z.enum(['left', 'center', 'right'])).optional(),
     tags: z.array(z.string()),
     featured: z.boolean().default(false),
     order: z.number().default(99),
