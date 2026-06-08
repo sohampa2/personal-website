@@ -10,7 +10,7 @@ paragraphs:
   - "Having confirmed the flat panels work, real CAD work began to divise a method to bring all the panels together in the most optimum manner with regard to weatherproofing, assembly time, cost, and field access for maintenance."
   - "Led this project in an engineer + PM capacity — end to end design, leading the testing protocol, selecting components, documenting the design pivot decision, and driving the verification roadmap covering waterproofing, dust ingress, condensation, and vibration dampening for the PTZ camera."
 bodyImage: "/projects/ptz-enclosure/02.jpg.jpg"
-galleryScale: 0.9
+galleryScale: 1.2
 imageScales:
   05.jpg.jpg: 0.6
 tags: [SolidWorks, Acrylic Fabrication, Optical Testing, IP65 Rated, Opto-Mechanical System]
