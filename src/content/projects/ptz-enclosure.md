@@ -12,7 +12,7 @@ paragraphs:
 bodyImage: "/projects/ptz-enclosure/02.jpg.jpg"
 galleryScale: 1.2
 imageScales:
-  02.jpg.jpg: 1.3
+  02.jpg.jpg: 2.5
   05.jpg.jpg: 0.6
 imageAlignments:
   02.jpg.jpg: left
