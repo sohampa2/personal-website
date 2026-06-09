@@ -176,9 +176,10 @@ const next = sorted[currentIndex + 1];
                   const scale = imageScales?.[filename] ?? galleryScale ?? 1;
                   const align = imageAlignments?.[filename] ?? 'center';
                   const marginStyle = align === 'left' ? 'margin:0 auto 0 0' : align === 'right' ? 'margin:0 0 0 auto' : 'margin:0 auto';
-                  const imgStyle = scale !== 1 ? `max-width:${scale * 100}%;${marginStyle}` : undefined;
+                  const imgStyle = scale !== 1 ? `width:${scale * 100}%;max-width:none;${marginStyle}` : undefined;
+                  const itemStyle = scale !== 1 ? 'overflow:visible' : undefined;
                   return (
-                    <div class="gallery-item" data-index={i}>
+                    <div class="gallery-item" data-index={i} style={itemStyle}>
                       <img src={src} alt={`${title} — image ${i + 2}`} loading="lazy" style={imgStyle} />
                     </div>
                   );
