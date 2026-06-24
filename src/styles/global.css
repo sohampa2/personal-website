@@ -644,6 +644,22 @@ t {
   color: var(--accent);
 }
 
+/* ── BANNER STRIP ─────────────────────────────────────────── */
+.banner-strip {
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  border-top: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+}
+.banner-strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  object-position: center 75%; /* move image up/down: 0% = top, 100% = bottom */
+}
+
 /* ── FOOTER ───────────────────────────────────────────────── */
 footer { border-top: 1px solid var(--border); padding: 28px 0; }
 .footer-inner {
