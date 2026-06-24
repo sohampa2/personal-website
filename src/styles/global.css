@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&family=Syne:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&family=Syne:wght@700;800&display=swap');
 
 /* ── TOKENS ───────────────────────────────────────────────── */
 :root {
@@ -13,7 +13,7 @@
   --border:  #C8BAA0;
   --mono:    'IBM Plex Mono', monospace;
   --head:    'Syne', sans-serif;
-  --display: 'Playfair Display', Georgia, serif;
+  --display: Georgia, serif;
   --body:    'IBM Plex Sans', sans-serif;
 }
 
@@ -264,12 +264,6 @@ t {
 }
 .ci-val { font-size: 0.88rem; color: var(--ink); }
 
-.stat-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-left: 1px solid var(--border);
-  border-right: 1px solid var(--border);
-}
 .stats-2x2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -336,7 +330,6 @@ t {
   text-transform: uppercase;
   color: var(--muted);
 }
-.section-rule { display: none; }
 .section-display-title {
   font-family: 'Anton', var(--display);
   font-size: clamp(1.6rem, 3vw, 2.4rem);
@@ -473,10 +466,6 @@ t {
   color: var(--accent);
   margin-top: 4px;
 }
-
-/* legacy */
-.writing-item { display: none; }
-.writing-date, .writing-title, .writing-tag { display: none; }
 
 /* ── PROJECTS ─────────────────────────────────────────────── */
 .projects { padding: 64px 0; border-bottom: 1px solid var(--border); }
@@ -1144,10 +1133,6 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   color: #fff;
   background: rgba(237,228,212,0.06);
 }
-/* legacy – keep hidden */
-.contact-block { display: none; }
-.contact-line { display: none; }
-
 /* border-box util */
 .border-box { border: 1px solid var(--border); }
 

@@ -247,35 +247,7 @@ const next = sorted[currentIndex + 1];
   </footer>
 
   <script>
-    const html = document.documentElement;
-    const saved = localStorage.getItem('theme');
-    if (saved) html.setAttribute('data-theme', saved);
-
     document.addEventListener('DOMContentLoaded', () => {
-      const btn = document.getElementById('themeBtn');
-      if (btn) {
-        btn.textContent = html.getAttribute('data-theme') === 'dark' ? '[ light ]' : '[ dark ]';
-        btn.addEventListener('click', () => {
-          const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-          html.setAttribute('data-theme', next);
-          btn.textContent = next === 'dark' ? '[ light ]' : '[ dark ]';
-          localStorage.setItem('theme', next);
-        });
-      }
-
-      const hamburger = document.getElementById('hamburger');
-      const mobileMenu = document.getElementById('mobileMenu');
-      hamburger?.addEventListener('click', () => {
-        const open = mobileMenu?.classList.toggle('open');
-        if (hamburger) hamburger.textContent = open ? 'close' : 'menu';
-      });
-
-      const fadeEls = document.querySelectorAll('.fade-in');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-      }, { threshold: 0.08 });
-      fadeEls.forEach(el => observer.observe(el));
-
       // Lightbox
       const galleryItems = document.querySelectorAll('.gallery-item');
       const lightbox = document.getElementById('lightbox');

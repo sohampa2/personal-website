@@ -3,9 +3,6 @@ import Base from '../layouts/Base.astro';
 import '../styles/global.css';
 import { getCollection } from 'astro:content';
 
-const allPosts = await getCollection('posts');
-const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-
 const allTeardowns = await getCollection('teardowns');
 const publishedTeardowns = allTeardowns
   .filter(t => !t.data.draft)
@@ -99,43 +96,7 @@ function formatDate(date: Date) {
     </div>
   </section>
 
-  <!-- PROJECTS (above writing) -->
-  <section class="projects" style="display:none">
-    <div class="container">
-      <div class="section-header fade-in">
-        <div class="section-kicker">
-          <span class="kicker-dots">······</span>
-          <span class="section-label">Engineering Projects</span>
-        </div>
-        <h2 class="section-display-title">Things I've Built</h2>
-      </div>
-      <div class="project-grid fade-in" style="transition-delay:0.08s">
-        {featuredProjects.map(project => (
-          <a href={`/projects/${project.id}`} class="project-card project-card-link">
-            {project.data.cover && (
-              <div class="project-card-img">
-                <img src={project.data.cover} alt={project.data.title} loading="lazy" />
-              </div>
-            )}
-            <div class="project-phase">
-              <span class="phase-dot">●</span>{project.data.phase}
-            </div>
-            <div class="project-context">{project.data.context}</div>
-            <h3 class="project-title">{project.data.title}</h3>
-            <p class="project-body">{(project.data.body ?? project.data.paragraphs?.[0] ?? '').slice(0, 180)}…</p>
-            <div class="tech-tags">
-              {project.data.tags.map(tag => (
-                <span class="tech-tag">{tag}</span>
-              ))}
-            </div>
-            <div class="card-cta">view project →</div>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS STRIP (experimental) -->
+  <!-- PROJECTS STRIP -->
   <section class="projects-strip-section" id="projects">
     <div class="strip-header container fade-in">
       <div class="section-kicker">
