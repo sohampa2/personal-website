@@ -657,7 +657,7 @@ t {
   height: 100%;
   object-fit: cover;
   display: block;
-  object-position: center 75%; /* move image up/down: 0% = top, 100% = bottom */
+  object-position: center 68%; /* move image up/down: 0% = top, 100% = bottom */
 }
 
 /* ── FOOTER ───────────────────────────────────────────────── */
