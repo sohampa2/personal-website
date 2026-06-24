@@ -647,7 +647,7 @@ t {
 /* ── BANNER STRIP ─────────────────────────────────────────── */
 .banner-strip {
   width: 100%;
-  height: 480px;
+  height: 550px;
   overflow: hidden;
   border-top: 3px solid var(--ink);
   border-bottom: 3px solid var(--ink);
