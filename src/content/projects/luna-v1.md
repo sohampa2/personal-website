@@ -5,14 +5,14 @@ context: "Personal Project · 20 days · $134"
 body: "Built a three-legged walking robot inspired by TARS from Interstellar — working prototype in 20 days on a $150 budget. Designed the full drivetrain, motor mounts, chassis, and box-jointed laser-cut acrylic body from scratch in Fusion 360. Used rotational dynamics and centre-of-mass hand calculations at every gait configuration to solve for tip-over conditions. Devised a speed-control method for servos to accurately model walking motion. Integrated voice recognition, OLED display, and Arduino motor control. All functional objectives met except interrupt-based command override."
 tags: [Fusion 360, Arduino, Laser Cutting, Servo Control, Dynamics Analysis, Python]
 featured: true
-order: 6
-cover: "/projects/luna-v1/cover.jpg.png"
+order: 7
+cover: "/projects/luna-v1/cover.webp"
 coverLayout: landscape
 retro: true
 images:
-  - "/projects/luna-v1/cover.jpg.png"
-  - "/projects/luna-v1/01.jpg.png"
-  - "/projects/luna-v1/02.jpg.png"
-  - "/projects/luna-v1/03.jpg.png"
-  - "/projects/luna-v1/04.jpg.png"
+  - "/projects/luna-v1/cover.webp"
+  - "/projects/luna-v1/01.webp"
+  - "/projects/luna-v1/02.webp"
+  - "/projects/luna-v1/03.webp"
+  - "/projects/luna-v1/04.webp"
 ---

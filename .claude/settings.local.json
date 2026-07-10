@@ -9,7 +9,17 @@
       "Bash(git push *)",
       "Bash(vercel --version)",
       "Bash(vercel project *)",
-      "Bash(vercel login *)"
+      "Bash(vercel login *)",
+      "Bash(rm /Users/sohamagarwal/personal-website/index.html)",
+      "Bash(node_modules/.bin/astro build *)",
+      "Bash(git config *)",
+      "Bash(mkdir -p ~/.ssh)",
+      "Bash(ssh-keygen -t ed25519 -C \"sohampa2@illinois.edu\" -f ~/.ssh/github -N \"\")",
+      "Bash(cat)",
+      "Bash(chmod 600 ~/.ssh/config)"
+    ],
+    "additionalDirectories": [
+      "/Users/sohamagarwal/personal-website"
     ]
   }
 }

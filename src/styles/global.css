@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&family=Syne:wght@700;800&display=swap');
+/* Fonts are loaded via <link> tags in Base.astro so the browser
+   discovers them without waiting on this stylesheet. */
 
 /* ── TOKENS ───────────────────────────────────────────────── */
 :root {
@@ -22,7 +23,7 @@
   --surface: #2A2820;
   --tan:     #3A3630;
   --ink:     #EDE4D4;
-  --muted:   #7A7060;
+  --muted:   #9C9182; /* lighter than light-mode muted to keep AA contrast on dark bg */
   --accent:  #C84030;
   --navy:    #4A4640;
   --green:   #4E7A58;
@@ -161,14 +162,6 @@ nav {
   gap: 48px;
   align-items: start;
 }
-.hero-kicker {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  text-transform: uppercase;
-  margin-bottom: 18px;
-}
 .hero-name {
   font-family: 'Anton', var(--head);
   font-size: clamp(3.2rem, 8vw, 6.5rem);
@@ -186,24 +179,6 @@ nav {
   margin-bottom: 36px;
   border-left: 3px solid var(--green);
   padding-left: 20px;
-}
-.btn-accen
-t {
-  display: inline-block;
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  color: #fff;
-  background: var(--accent);
-  border: 2px solid var(--ink);
-  border-radius: 4px;
-  padding: 10px 22px;
-  box-shadow: 3px 3px 0 var(--navy);
-  transition: box-shadow 0.12s, transform 0.12s;
-}
-.btn-accent:hover {
-  box-shadow: none;
-  transform: translate(3px, 3px);
 }
 .btn-green {
   display: inline-block;
@@ -276,29 +251,6 @@ t {
 }
 .stat-cell:nth-child(even) { border-right: none; }
 .stat-cell:nth-last-child(-n+2) { border-bottom: none; }
-.stat-number {
-  font-family: var(--head);
-  font-size: 2rem;
-  line-height: 1;
-  color: var(--ink);
-  margin-bottom: 4px;
-}
-.stat-label {
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.stat-note {
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  color: var(--muted);
-  padding: 10px 16px;
-  border: 1px solid var(--border);
-  border-top: none;
-  background: var(--surface);
-}
 
 /* ── EDITORIAL PANELS ─────────────────────────────────────── */
 .editorial {
@@ -468,23 +420,6 @@ t {
 }
 
 /* ── PROJECTS ─────────────────────────────────────────────── */
-.projects { padding: 64px 0; border-bottom: 1px solid var(--border); }
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-}
-.project-card {
-  padding: 28px 24px;
-  border: 2px solid var(--ink);
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 4px 4px 0 var(--navy);
-  transition: transform 0.15s;
-}
-.project-card:hover {
-  transform: translateY(-3px);
-}
 .project-phase {
   font-family: var(--mono);
   font-size: 0.62rem;
@@ -493,7 +428,6 @@ t {
   margin-bottom: 18px;
 }
 .phase-dot { color: var(--accent); margin-right: 4px; }
-.phase-arrow { margin: 0 6px; color: var(--muted); }
 .project-title {
   font-family: var(--head);
   font-size: 1.16rem;
@@ -572,39 +506,6 @@ t {
   width: auto;
   max-width: none;
 }
-.strip-card-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(16, 16, 10, 0.88);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 22px 20px;
-  opacity: 0;
-  transition: opacity 0.22s ease;
-}
-.strip-card:hover .strip-card-overlay { opacity: 1; }
-.strip-card-phase {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 8px;
-}
-.strip-card-phase .phase-dot { color: var(--accent); margin-right: 4px; }
-.strip-card-title {
-  font-family: var(--mono);
-  font-size: 1rem;
-  line-height: 1.2;
-  color: #fff;
-  margin-bottom: 8px;
-}
-.strip-card-body {
-  font-size: 0.78rem;
-  line-height: 1.55;
-  color: rgba(255,255,255,0.65);
-  margin-bottom: 14px;
-}
 /* Strip full tile (first card) */
 .strip-card--full {
   display: flex;
@@ -635,13 +536,6 @@ t {
   padding: 28px 24px;
   background: var(--bg);
   overflow-wrap: break-word;
-}
-
-.strip-card-cta {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
-  color: var(--accent);
 }
 
 /* ── BANNER STRIP ─────────────────────────────────────────── */
@@ -992,29 +886,6 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   line-height: 1.2;
 }
 
-/* Clickable project card */
-.project-card-link {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-  transition: background 0.12s;
-}
-.project-card-link:hover { background: var(--surface); }
-.project-card-link:hover .card-cta { color: var(--accent); }
-
-.project-card-img {
-  margin: -28px -24px 20px -24px;
-  border-bottom: 2px solid var(--navy);
-  background: var(--bg);
-}
-.project-card-img img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.35s ease;
-}
-.project-card-link:hover .project-card-img img { transform: scale(1.04); }
-
 .card-cta {
   font-family: var(--mono);
   font-size: 0.68rem;
@@ -1149,21 +1020,12 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   color: #fff;
   background: rgba(237,228,212,0.06);
 }
-/* border-box util */
-.border-box { border: 1px solid var(--border); }
-
-
 /* ── RESPONSIVE ───────────────────────────────────────────── */
-@media (max-width: 1100px) {
-  .project-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .teardown-list { grid-template-columns: 1fr; }
   .about-top-grid { grid-template-columns: 1fr; }
   .skills-label { width: 110px; font-size: 0.58rem; }
-  .contact-block { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 640px) {
@@ -1173,11 +1035,6 @@ footer { border-top: 1px solid var(--border); padding: 28px 0; }
   .teardown-list { grid-template-columns: 1fr; }
   .teardown-card { box-shadow: 3px 3px 0 var(--navy); }
   .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
-  .project-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 480px) {
-  .theme-toggle { display: none; }
 }
 
 /* ── BODY + SIDE IMAGE ───────────────────────────────────── */

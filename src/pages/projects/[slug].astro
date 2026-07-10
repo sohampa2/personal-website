@@ -20,9 +20,15 @@ const sorted = allProjects.sort((a, b) => a.data.order - b.data.order);
 const currentIndex = sorted.findIndex(p => p.id === project.id);
 const prev = sorted[currentIndex - 1];
 const next = sorted[currentIndex + 1];
+
+// First ~155 chars of the overview, cut at a word boundary, for the meta description.
+const rawDesc = body ?? paragraphs?.[0] ?? '';
+const description = rawDesc.length > 155
+  ? rawDesc.slice(0, 155).slice(0, rawDesc.slice(0, 155).lastIndexOf(' ')) + '…'
+  : rawDesc || undefined;
 ---
 
-<Base title={`${title} — Soham Agarwal`}>
+<Base title={`${title} — Soham Agarwal`} description={description}>
   <!-- NAV -->
   <nav>
     <div class="container">
@@ -30,19 +36,19 @@ const next = sorted[currentIndex + 1];
         <a href="/" class="nav-logo">S. Agarwal</a>
         <div class="nav-right">
           <ul class="nav-links">
-            <li><a href="/#writing">teardowns</a></li>
             <li><a href="/#projects">portfolio</a></li>
+            <li><a href="/#writing">teardowns</a></li>
             <li><a href="/#about">about</a></li>
             <li><a href="/#contact">contact</a></li>
           </ul>
           <button class="theme-toggle" id="themeBtn" aria-label="Toggle dark mode">[ dark ]</button>
-          <button class="nav-hamburger" id="hamburger" aria-label="Open menu">menu</button>
+          <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">menu</button>
         </div>
       </div>
     </div>
     <div class="mobile-menu" id="mobileMenu">
-      <a href="/#writing">teardowns</a>
       <a href="/#projects">portfolio</a>
+      <a href="/#writing">teardowns</a>
       <a href="/#about">about</a>
       <a href="/#contact">contact</a>
     </div>
@@ -146,7 +152,7 @@ const next = sorted[currentIndex + 1];
                   <iframe
                     src={`https://www.youtube.com/embed/${video}`}
                     title="Project video"
-                    frameborder="0"
+                    
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen
                   ></iframe>
@@ -164,7 +170,7 @@ const next = sorted[currentIndex + 1];
                 <iframe
                   src={`https://www.youtube.com/embed/${video}`}
                   title="Project video"
-                  frameborder="0"
+                  
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
                 ></iframe>
